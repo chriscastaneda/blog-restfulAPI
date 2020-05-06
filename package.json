@@ -1,0 +1,33 @@
+{
+  "name": "restfulapi-blog",
+  "version": "1.0.0",
+  "description": "project 0 restfulAPI Blog",
+  "main": "index.js",
+  "scripts": {
+    "start": " node dist/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chriscastaneda/rev-p0-restfulAPI.git"
+  },
+  "author": "Chris Castaneda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chriscastaneda/rev-p0-restfulAPI/issues"
+  },
+  "homepage": "https://github.com/chriscastaneda/rev-p0-restfulAPI#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.6",
+    "@types/node": "^13.13.4",
+    "nodemon": "^2.0.3",
+    "ts-node": "^8.10.1",
+    "tsc": "^1.20150623.0",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
