@@ -1,10 +1,14 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import {Product} from './product';
 
+/**initialize */
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+//app.set('port', port);//assigning port
 
-/**Route */
+/**Middleware(s) */
+app.use(bodyParser.json());
 app.get('/', (req, res) => {
     res.send(ptoclient);
 });
@@ -20,8 +24,8 @@ function getProducts(){
     return p;
 }
 
-/**Port*/
-app.listen(port, err =>{
+/**Listener*/
+app.listen(port, err => {
     if(err){
         return console.log(err);
     }else{
