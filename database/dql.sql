@@ -1,0 +1,2 @@
+/*Comments*/
+SELECT * FROM author;

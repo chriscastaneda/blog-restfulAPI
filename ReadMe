@@ -1,1 +1,28 @@
 read me test
+
+npm init
+Copy/Paste package.json
+npm install pg typescript express bodyparser
+npm install --save-dev nodemon ts-node body-parser @types/pg @types/express @types/node 
+npm install tslint --init ??? or eslint
+.gitignore		/*add manually*/ git init
+tsconfig.js		/*add manually*/ tsc --init
+npm install		/*to install node_modules for package.json edits*/
+
+/*side notes*/
+# Locally in your project. 
+npm install -D typescript
+npm install -D ts-node
+
+
+Git Commands:
+---------------
+Add files:	Add one or more files to staging (index):	
+git add <filename>
+git add *
+
+Commit:	Commit changes to head (but not yet to the remote repository):	
+git commit -m "Commit message"
+
+Push:	Send changes to the master branch of your remote repository:	
+git push origin master
