@@ -1,5 +1,5 @@
 /*comments*/
-SELECT * FROM author;
+SELECT * FROM authors;
 
 SELECT title FROM post;
 

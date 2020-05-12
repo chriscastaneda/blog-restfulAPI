@@ -1,5 +1,5 @@
 /*Comments Here*/
-CREATE TABLE author (
+CREATE TABLE authors (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY, 
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
@@ -25,4 +25,4 @@ CREATE TABLE commenting (
 );
 
 
---DROP TABLE author;
+--DROP TABLE authors;
