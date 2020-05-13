@@ -6,7 +6,7 @@ export class Author {
     email: string;
 
     //Create new JS instance object from database schema
-    static from(object: AuthorRow) {
+    static from(object: AuthorRow): Author {
         const author = new Author(
             object.id, object.first_name, object.last_name, object.email
         );

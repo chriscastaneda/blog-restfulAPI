@@ -17,7 +17,7 @@ export function getAuthorById(id: number): Promise<Author> {
     return authorDao.getAllAuthorById(id);
 };
 
-//Reference database object
+//Create database object
 export function saveAuthor(author: any): Promise<Author> {
     const newAuthor = new Author ( //create object from service request
         undefined, //set undefined id to prevent sql injection
@@ -48,4 +48,10 @@ export function patchAuthor(properties: any): Promise<Author> {
     }else{
         return authorDao.patchAuthor(author);
     }
+};
+
+
+//Delete by Id
+export function deleteAuthorById(id: number): Promise<Author> {
+    return authorDao.deleteAuthorById(id);
 };

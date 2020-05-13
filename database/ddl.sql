@@ -28,3 +28,4 @@ CREATE TABLE commenting (
 DROP TABLE authors;
 DROP TABLE post;
 DROP TABLE commenting;
+--DELETE FROM authors WHERE id = 6;

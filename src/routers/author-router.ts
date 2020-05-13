@@ -1,5 +1,6 @@
 import express from 'express';
 import * as authorService from '../services/author-service';
+import { request } from 'http';
 
 /**Export authors from database */
 export const authorRouter = express.Router();
@@ -10,31 +11,33 @@ export const authorRouter = express.Router();
 
 /**READ */
 authorRouter.get('', (request, response, next) => { //localhost:3000/author
-    authorService.getAllAuthors().then(authors => { //calling new doa object from services 
-        response.json(authors); //store in json
-        next();
-    }).catch(err => {//Request error handler
-        console.log(err);
-        response.sendStatus(500);
-    });
+    authorService.getAllAuthors()
+        .then(authors => { //calling new doa object from services 
+                response.json(authors); //store in json
+                next();
+            }).catch(err => {//Request error handler
+                console.log(err);
+                response.sendStatus(500);
+        });
 });
 
-/**READ by id */
+/**READ by id */ 
 authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/id
     const id = parseInt(request.params.id); //request id as integer
 
-    const author = authorService.getAuthorById(id).then(author => {
-        if(!author){
-            response.sendStatus(404); //if return object does not exist
-        }else{
-            response.json(author);
-        }
-        next()
-    }).catch(err => {
-        console.log(err);
-        response.sendStatus(500); //if recieving datbase issue's
-        next();
-    });
+    const author = authorService.getAuthorById(id)
+        .then(author => {
+            if(!author){
+                response.sendStatus(404); //if return object does not exist
+            }else{
+                response.json(author);
+            }
+            next()
+            }).catch(err => {
+                console.log(err);
+                response.sendStatus(500); //if recieving datbase issue's
+                next();
+        });
 });
 
 /**CREATE */
@@ -50,7 +53,7 @@ authorRouter.post('', (request, response, next) => { //localhost:3000/author
             console.log(err);
             response.sendStatus(500);
             next();
-        });
+        }); 
 });
 
 /**UPDATE Alternitive */
@@ -72,5 +75,20 @@ authorRouter.patch('', (request, response, next) => {
         });
 });
 
+/**DELETE */ 
+authorRouter.delete('', (request, response, next) => {
+    const id = parseInt(request.params.id);
 
-//1:36:30
+    const author = authorService.deleteAuthorById(id)
+        .then(author => {
+            if(!author){ 
+                response.sendStatus(404);//if object does not exist
+            }else{
+                response.json(author)
+            }
+        }).catch(err => {
+            console.log(err);
+            response.sendStatus(500); //if recieving datbase issue's
+            next();
+        });
+});
