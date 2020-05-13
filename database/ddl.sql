@@ -12,7 +12,7 @@ CREATE TABLE post (
 	title VARCHAR(40),
 	body VARCHAR(1000),
 	publish_date DATE,
-	aurthor_id INTEGER REFERENCES author(id)
+	authors_id INTEGER REFERENCES authors(id)
 );
 
 /*Comments Here*/
@@ -20,9 +20,11 @@ CREATE TABLE commenting (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	body VARCHAR(1200),
 	publish_date DATE,
-	aurthor_id INTEGER REFERENCES author(id),
+	authors_id INTEGER REFERENCES authors(id),
 	post_id INTEGER REFERENCES post(id)
 );
 
 
---DROP TABLE authors;
+DROP TABLE authors;
+DROP TABLE post;
+DROP TABLE commenting;

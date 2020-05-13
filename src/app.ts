@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import {Product} from './product';
 import { dbConnection } from './daos/db';
+import { authorRouter } from './routers/author-router';
 
 /**initialize */
 const app = express();
@@ -12,20 +12,16 @@ app.set('port', port);//set port globally
 app.use(bodyParser.json());
 
 /**Routers */
+app.use('/authors', authorRouter);
 
-/**SIGINT Listener */
-//Releases AWS db connection to server with Ctrl+C prior to app being stopped
-process.on('SIGINT', () => {
+/**Pool Connection error handle */
+process.on('unhandledRejection', () => {
     dbConnection.end().then(() => {
         console.log('Database pool closed');
     });
 });
 
 /**Port Listener*/
-app.listen(port, err => {
-    if(err){
-        return console.log(err);
-    }else{
-        return console.log(`Server is running on http://localhost: ${port}`);
-    }
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
 });

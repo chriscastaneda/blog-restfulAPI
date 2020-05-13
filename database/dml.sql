@@ -3,7 +3,7 @@ INSERT INTO authors (first_name, last_name, email)
 	VALUES ('Peter', 'Parker', 'mjlover69@sonypictures.com');
 	
 INSERT INTO authors (first_name, last_name, email) VALUES 
-	('Batman', 'Beyond', 'im-batman@detectivecomicscomics.com'), 
+	('Batman', 'Beyond', 'im-the-batman@detectivecomicscomics.com'), 
 	('Wade', 'Wilson', 'xforce_alumni@deadpool.edu'),
 	('Billy', 'Batson', 'dope.superhero@theshazamster.com'),
 	('Pepper', 'Potts', 'iloveyou3000@avengers.co'),

@@ -1,32 +1,51 @@
 import { Author } from '../models/Author';
 import * as authorDao from '../daos/author-dao';
+import { resolve } from 'dns';
+import { rejects } from 'assert';
 /**Application Logic */
 
 
 //Store new JS Author Object in array??
-export function getAllAuthors(): Author[] {
+export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returning promise from doa's
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthors();
 };
 
 //Reference object by database id
-export function getAuthorById(id: number): Author {
+export function getAuthorById(id: number): Promise<Author> {
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthorById(id);
 };
 
 //Reference database object
-export function saveAuthor(author: any): Author {
-    const newAuthor = new Author ( //create only needed object properties rule
-        undefined, //set id to undefined for sql inkection
+export function saveAuthor(author: any): Promise<Author> {
+    const newAuthor = new Author ( //create object from service request
+        undefined, //set undefined id to prevent sql injection
         author.firstName, 
         author.lastName, 
         author.email
     )
 
-    if(author.firstName && author.lastName && author.email){ //Data is valide - submit to DAO
+    if(author.firstName && author.lastName && author.email){ //Data is valid - submit to DAO
         return authorDao.saveAuthor(newAuthor);
     }else{
-        //PASS
+        console.log('Author invalid');
+        return new Promise((resolve, reject) => reject(422));
+    }
+};
+
+//Update by object properties
+export function patchAuthor(properties: any): Promise<Author> {
+    const author = new Author(
+        properties.id,
+        properties.firstName,
+        properties.lastName,
+        properties.email
+    );
+
+    if(!author.id){
+        throw new Error('400');
+    }else{
+        return authorDao.patchAuthor(author);
     }
 };

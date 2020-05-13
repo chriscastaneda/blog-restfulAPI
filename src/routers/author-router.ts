@@ -1,6 +1,5 @@
 import express from 'express';
 import * as authorService from '../services/author-service';
-import { Author } from '../models/Author';
 
 /**Export authors from database */
 export const authorRouter = express.Router();
@@ -11,28 +10,67 @@ export const authorRouter = express.Router();
 
 /**READ */
 authorRouter.get('', (request, response, next) => { //localhost:3000/author
-    const authors: Author[] = authorService.getAllAuthors(); //calling from services into new object group
-    response.json(authors); //store user in json
-    next();
+    authorService.getAllAuthors().then(authors => { //calling new doa object from services 
+        response.json(authors); //store in json
+        next();
+    }).catch(err => {//Request error handler
+        console.log(err);
+        response.sendStatus(500);
+    });
 });
 
 /**READ by id */
 authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/id
     const id = parseInt(request.params.id); //request id as integer
-    const author = authorService.getAuthorById(id);
-    if(!author){
-        response.sendStatus(404); //if return object does not exist
-    }else{
-        response.json(author);
-    }
-    next();
+
+    const author = authorService.getAuthorById(id).then(author => {
+        if(!author){
+            response.sendStatus(404); //if return object does not exist
+        }else{
+            response.json(author);
+        }
+        next()
+    }).catch(err => {
+        console.log(err);
+        response.sendStatus(500); //if recieving datbase issue's
+        next();
+    });
 });
 
 /**CREATE */
 authorRouter.post('', (request, response, next) => { //localhost:3000/author
     const author = request.body; //request entire body
-    const createdAuthors = authorService.saveAuthor(author); //returns new object to database
-    response.status(201);
-    response.json(createdAuthors); //return new object
-    next();
+
+    authorService.saveAuthor(author) //returns new object to database
+        .then(newAuthor => {
+            response.status(201);
+            response.json(newAuthor); //return new object
+            next();
+        }).catch(err => {
+            console.log(err);
+            response.sendStatus(500);
+            next();
+        });
 });
+
+/**UPDATE Alternitive */
+authorRouter.patch('', (request, response, next) => {
+    const author = request.body;
+
+    authorService.patchAuthor(author)
+        .then(updatedAuthor => {
+            if(!updatedAuthor){
+                response.sendStatus(404);
+            }else{
+                response.json(updatedAuthor);
+            }
+        }).catch(err => {
+            console.log(err);
+            response.sendStatus(500);
+        }).finally(() => {
+            next();
+        });
+});
+
+
+//1:36:30
