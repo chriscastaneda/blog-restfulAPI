@@ -25,7 +25,7 @@ export function getAllAuthorById(id: number): Promise<Author> {
 //Insert
 export function saveAuthor(author: Author): Promise<Author> {
     const sql = `INSERT INTO authors (first_name, last_name, email) \
-    VALUES ('$1', '$2', '$3') RETURNING *`; //Returning Data after insertion 
+    VALUES ($1, $2, $3) RETURNING *`; //Returning Data after insertion 
 
     return dbConnection.query<AuthorRow>(sql, [ //Filter placeholder response with [firstName, lastName, email]
         author.firstName,
@@ -52,7 +52,7 @@ export function patchAuthor(author: Author): Promise<Author> {
 
 //Delete by Id
 export function deleteAuthorById(id: number): Promise<Author> {
-    const sql = 'DELETE FROM authors WHERE id = $1';
+    const sql = `DELETE FROM authors WHERE id = $1 RETURNING *`;
 
     return dbConnection.query<AuthorRow>(sql, [id])
         .then(result => result.rows.map(row => Author.from(row))[0]);

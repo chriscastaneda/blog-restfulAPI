@@ -50,7 +50,6 @@ export function patchAuthor(properties: any): Promise<Author> {
     }
 };
 
-
 //Delete by Id
 export function deleteAuthorById(id: number): Promise<Author> {
     return authorDao.deleteAuthorById(id);

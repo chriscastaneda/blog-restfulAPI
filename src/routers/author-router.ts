@@ -76,7 +76,7 @@ authorRouter.patch('', (request, response, next) => {
 });
 
 /**DELETE */ 
-authorRouter.delete('', (request, response, next) => {
+authorRouter.delete('/:id', (request, response, next) => {
     const id = parseInt(request.params.id);
 
     const author = authorService.deleteAuthorById(id)
@@ -84,7 +84,8 @@ authorRouter.delete('', (request, response, next) => {
             if(!author){ 
                 response.sendStatus(404);//if object does not exist
             }else{
-                response.json(author)
+                console.log(`Author account deleted at id:${id}`);
+                response.json(author);
             }
         }).catch(err => {
             console.log(err);
