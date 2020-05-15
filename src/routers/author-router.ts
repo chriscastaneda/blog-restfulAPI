@@ -28,7 +28,7 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
     const author = authorService.getAuthorById(id)
         .then(author => {
             if(!author){
-                response.sendStatus(404); //if return object does not exist
+                response.sendStatus(404); //if RETURN object does not exist
             }else{
                 response.json(author);
             }
@@ -40,13 +40,25 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
         });
 });
 
-/**Read by id to retrieve author's post */
+/**Read post by id */
 authorRouter.get('/:id/post', async (request, response, next) => { //request promise with async
     const id: number = parseInt(request.params.id);
+    let post: Post[];
 
-    const post: Post[] = await authorService.getPostByAuthorId(id); //unwrap promise
+    try {
+        post = await authorService.getPostByAuthorId(id); //unwrap promise
+    }catch(err){
+        response.sendStatus(500); //send status promise not met
+        console.log(err);
+        return;
+    }
+    
+    if(!post){
+        response.sendStatus(404); //return undefined if author does not exist
+    }else{
         response.json(post);
-        next();
+    }
+    next();
 });
 
 /**CREATE */

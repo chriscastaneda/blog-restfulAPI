@@ -23,18 +23,31 @@ export function getAllAuthorById(id: number): Promise<Author> {
         .then(result => result.rows.map(row => Author.from(row))[0]); //Limit result to 1 object by index[0]
 };
 
+//Validation interface
+interface Exists {
+    exists: boolean;
+};
+//Valid author by id
+export async function authorExists(authorId: number): Promise<boolean> {
+    const sql = `SELECT EXISTS(SELECT id FROM authors WHERE id = $1)`; //Validate user via database by boolean
+    
+    const result = await dbConnection.query<Exists>(sql, [authorId]);
+    return result.rows[0].exists; //if boolean: 0, user exists
+};
+
 //Retrive authors post's by id
 export async function getPostByAuthorId(authorId: number): Promise<Post[]> {
-    const sql = `SELECT post.* FROM authors 
-                 LEFT JOIN post ON authors.id = post.authors_id 
-                 WHERE authors_id = $1`;
-
-    try{
-        const result = await dbConnection.query<Post>(sql, [authorId]); //Async/Await: Unwrap promise
-        return result.rows; //return promise<Post[]>
-    }catch(err){
-        console.log(err);
+    const userExists: boolean = await authorExists(authorId); //call authorExists fucntion for validation
+    if(!userExists){
+        return undefined; //If userExist: false, erturn un defined.
     }
+
+    const sql = `SELECT post.* FROM authors \
+                 LEFT JOIN post ON authors.id = post.authors_id \
+                 WHERE authors_id = $1`;
+                 
+    const result = await dbConnection.query<Post>(sql, [authorId]); //Async/Await: Unwrap promise
+    return result.rows; //return promise<Post[]>
 };
 
 //Insert

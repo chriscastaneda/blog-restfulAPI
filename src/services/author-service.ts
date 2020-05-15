@@ -10,13 +10,13 @@ export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returni
     return authorDao.getAllAuthors();
 };
 
-//Reference object by database id
+//Reference author object by database id
 export function getAuthorById(id: number): Promise<Author> {
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthorById(id);
 };
 
-//Reference object by database id
+//Reference post object by database id
 export function getPostByAuthorId(id: number): Promise<Post[]> {
     return authorDao.getPostByAuthorId(id);
 };

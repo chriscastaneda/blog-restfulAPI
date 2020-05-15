@@ -10,9 +10,10 @@ tsconfig.js		/*add manually*/ tsc --init
 npm install		/*to install node_modules for package.json edits*/
 
 npm install --save-dev ts-jest jest @types/jest
+
 npm install --save-dev supertest @types/supertest
 
-1:38:00
+
 
 /*side notes*/
 # Locally in your project. 
