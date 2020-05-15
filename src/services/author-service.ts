@@ -1,7 +1,6 @@
 import { Author } from '../models/Author';
 import * as authorDao from '../daos/author-dao';
-import { resolve } from 'dns';
-import { rejects } from 'assert';
+import { Post } from '../models/Post';
 /**Application Logic */
 
 
@@ -15,6 +14,11 @@ export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returni
 export function getAuthorById(id: number): Promise<Author> {
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthorById(id);
+};
+
+//Reference object by database id
+export function getPostByAuthorId(id: number): Promise<Post[]> {
+    return authorDao.getPostByAuthorId(id);
 };
 
 //Create database object

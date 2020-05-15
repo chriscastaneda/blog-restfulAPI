@@ -9,6 +9,11 @@ npm install tslint --init ??? or eslint
 tsconfig.js		/*add manually*/ tsc --init
 npm install		/*to install node_modules for package.json edits*/
 
+npm install --save-dev ts-jest jest @types/jest
+npm install --save-dev supertest @types/supertest
+
+1:38:00
+
 /*side notes*/
 # Locally in your project. 
 npm install -D typescript
@@ -23,6 +28,7 @@ L:10,Morn, 2:32:50
 
  birthdate:
  L10, Lunc, v#2, 0:18:57 & 1:34:01 & 1:36:30
+ L12, 0:57:17
 
  CRUD:
  --------
@@ -31,6 +37,9 @@ L:10,Morn, 2:32:50
  ReadById: Get, /authors/#
  Update: Patch, /authors, body: {"id": 9, "firstName": "TestPatch"}
  Delete: Dlelete, /authors/#  
+
+ getPetsByPersonId:
+ Get: people/#/Denny
 
 Git Commands:
 ---------------

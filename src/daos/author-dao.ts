@@ -1,5 +1,6 @@
 import { dbConnection} from '../daos/db';
 import { Author, AuthorRow } from '../models/Author';
+import { Post } from '../models/Post';
 /**Database query logic */
 
 
@@ -20,6 +21,20 @@ export function getAllAuthorById(id: number): Promise<Author> {
 
     return dbConnection.query<AuthorRow>(sql, [id]) //Filter response for only [id]
         .then(result => result.rows.map(row => Author.from(row))[0]); //Limit result to 1 object by index[0]
+};
+
+//Retrive authors post's by id
+export async function getPostByAuthorId(authorId: number): Promise<Post[]> {
+    const sql = `SELECT post.* FROM authors 
+                 LEFT JOIN post ON authors.id = post.authors_id 
+                 WHERE authors_id = $1`;
+
+    try{
+        const result = await dbConnection.query<Post>(sql, [authorId]); //Async/Await: Unwrap promise
+        return result.rows; //return promise<Post[]>
+    }catch(err){
+        console.log(err);
+    }
 };
 
 //Insert

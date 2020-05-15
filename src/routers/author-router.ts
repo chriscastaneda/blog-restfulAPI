@@ -1,6 +1,6 @@
 import express from 'express';
 import * as authorService from '../services/author-service';
-import { request } from 'http';
+import { Post } from '../models/Post';
 
 /**Export authors from database */
 export const authorRouter = express.Router();
@@ -33,11 +33,20 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
                 response.json(author);
             }
             next()
-            }).catch(err => {
-                console.log(err);
-                response.sendStatus(500); //if recieving datbase issue's
-                next();
+        }).catch(err => {
+            console.log(err);
+            response.sendStatus(500); //if recieving datbase issue's
+            next();
         });
+});
+
+/**Read by id to retrieve author's post */
+authorRouter.get('/:id/post', async (request, response, next) => { //request promise with async
+    const id: number = parseInt(request.params.id);
+
+    const post: Post[] = await authorService.getPostByAuthorId(id); //unwrap promise
+        response.json(post);
+        next();
 });
 
 /**CREATE */
