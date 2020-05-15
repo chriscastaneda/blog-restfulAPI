@@ -47,7 +47,7 @@ Add files:	Add one or more files to staging (index):
 git add <filename>
 git add *
 
-Use git rm foo to stage the file for deletion. (This will also delete the file from the file system, if it hadn't been previously deleted. It can, of course, be restored from git, since it was previously checked in.)
+git rm foo to stage the file for deletion. (This will also delete the file from the file system, if it hadn't been previously deleted. It can, of course, be restored from git, since it was previously checked in.)
 To stage the file for deletion without deleting it from the file system, use git rm --cached foo.
 
 Commit:	Commit changes to head (but not yet to the remote repository):	
