@@ -1,2 +1,0 @@
-INSERT INTO authors (FIRST_NAME, LAST_NAME email)
-	VALUES 

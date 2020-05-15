@@ -1,2 +1,0 @@
-/*Comments*/
-SELECT * FROM authors;
