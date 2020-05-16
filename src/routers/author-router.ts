@@ -13,10 +13,11 @@ export const authorRouter = express.Router();
 authorRouter.get('', (request, response, next) => { //localhost:3000/author
     authorService.getAllAuthors()
         .then(authors => { //calling new doa object from services 
+                response.set('content-type', 'application/json');
                 response.json(authors); //store in json
                 next();
             }).catch(err => {//Request error handler
-                console.log(err);
+                //console.log(err);
                 response.sendStatus(500);
         });
 });
@@ -34,7 +35,7 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
             }
             next()
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500); //if recieving datbase issue's
             next();
         });
@@ -49,7 +50,7 @@ authorRouter.get('/:id/post', async (request, response, next) => { //request pro
         post = await authorService.getPostByAuthorId(id); //unwrap promise
     }catch(err){
         response.sendStatus(500); //send status promise not met
-        console.log(err);
+        //console.log(err);
         return;
     }
     
@@ -71,7 +72,7 @@ authorRouter.post('', (request, response, next) => { //localhost:3000/author
             response.json(newAuthor); //return new object
             next();
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500);
             next();
         }); 

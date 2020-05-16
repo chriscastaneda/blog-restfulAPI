@@ -33,7 +33,7 @@ export function saveAuthor(author: any): Promise<Author> {
     if(author.firstName && author.lastName && author.email){ //Data is valid - submit to DAO
         return authorDao.saveAuthor(newAuthor);
     }else{
-        console.log('Author invalid');
+        //console.log('Author invalid');
         return new Promise((resolve, reject) => reject(422));
     }
 };
