@@ -12,11 +12,26 @@ INSERT INTO authors (first_name, last_name, email) VALUES
 
 
 --Post Table
-INSERT INTO post (title, body, publish_date) VALUES 
-	('Peters Article', 'Body Here', '2020-01-01'::DATE),
-	('Batmans Article', 'Body Here', '2020-02-01'::DATE), 
-	('Wades Article', 'Body Here', '2020-03-01'::DATE),
-	('Billys Article', 'Body Here', '2020-04-01'::DATE),
-	('Peppers Article', 'Body Here', '2020-05-01'::DATE),
-	('Abbys Article', 'Body Here', '2020-06-01'::DATE);
+INSERT INTO posts (title, body, publish_date, authors_id) VALUES 
+	('Peters Article', 'Body Here', '2020-01-01'::DATE, 1),
+	('Batmans Article', 'Body Here', '2020-02-01'::DATE, 2), 
+	('Wades Article', 'Body Here', '2020-03-01'::DATE, 3),
+	('Billys Article', 'Body Here', '2020-04-01'::DATE, 4),
+	('Peppers Article', 'Body Here', '2020-05-01'::DATE, 5),
+	('Abbys Article', 'Body Here', '2020-06-01'::DATE, 6);
 	
+INSERT INTO posts (title, body, publish_date, authors_id) VALUES 
+	('Peters Second Article', 'Body Here', '2020-01-02'::DATE, 1);
+	
+
+--Comments Table
+INSERT INTO commenting (body, publish_date, authors_id, post_id) VALUES 
+	('Peters Comments Here', '2020-01-01'::DATE, 1, 1),
+	('Batmans Comments Here', '2020-02-01'::DATE, 2, 2), 
+	('Wades Comments Here', '2020-03-01'::DATE, 3, 3),
+	('Billys Comments Here', '2020-04-01'::DATE, 4, 4),
+	('Peppers Comments Here', '2020-05-01'::DATE, 5, 5),
+	('Abbys Comments Here', '2020-06-01'::DATE, 6, 6);
+
+
+

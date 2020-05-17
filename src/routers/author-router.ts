@@ -1,6 +1,6 @@
 import express from 'express';
 import * as authorService from '../services/author-service';
-import { Post } from '../models/Post';
+//import { Post } from '../models/Post';
 
 /**Export authors from database */
 export const authorRouter = express.Router();
@@ -9,7 +9,7 @@ export const authorRouter = express.Router();
 
 /**CRUD from database */
 
-/**READ */
+/**READ All */
 authorRouter.get('', (request, response, next) => { //localhost:3000/author
     authorService.getAllAuthors()
         .then(authors => { //calling new doa object from services 
@@ -33,7 +33,7 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
             }else{
                 response.json(author);
             }
-            next()
+            next();
         }).catch(err => {
             //console.log(err);
             response.sendStatus(500); //if recieving datbase issue's
@@ -41,26 +41,27 @@ authorRouter.get('/:id', (request, response, next) => { //localhost:3000/author/
         });
 });
 
-/**Read post by id */
-authorRouter.get('/:id/post', async (request, response, next) => { //request promise with async
+//?Fix logic
+/**Read posts by author id 
+authorRouter.get('/:id/posts', async (request, response, next) => { //request promise with async
     const id: number = parseInt(request.params.id);
-    let post: Post[];
+    let posts: Post[];
 
     try {
-        post = await authorService.getPostByAuthorId(id); //unwrap promise
+        posts = await authorService.getPostsByAuthorId(id); //unwrap promise
     }catch(err){
         response.sendStatus(500); //send status promise not met
         //console.log(err);
         return;
     }
     
-    if(!post){
+    if(!posts){
         response.sendStatus(404); //return undefined if author does not exist
     }else{
-        response.json(post);
+        response.json(posts);
     }
     next();
-});
+});*/
 
 /**CREATE */
 authorRouter.post('', (request, response, next) => { //localhost:3000/author

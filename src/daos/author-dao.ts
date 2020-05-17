@@ -27,7 +27,7 @@ export function getAllAuthorById(id: number): Promise<Author> {
 interface Exists {
     exists: boolean;
 };
-//Valid author by id
+//Valid author by id in database
 export async function authorExists(authorId: number): Promise<boolean> {
     const sql = `SELECT EXISTS(SELECT id FROM authors WHERE id = $1)`; //Validate user via database by boolean
     
@@ -35,20 +35,21 @@ export async function authorExists(authorId: number): Promise<boolean> {
     return result.rows[0].exists; //if boolean: 0, user exists
 };
 
-//Retrive authors post's by id
-export async function getPostByAuthorId(authorId: number): Promise<Post[]> {
+//?Fix logic
+/**Retrive posts by authors id
+export async function getPostsByAuthorId(authorId: number): Promise<Post[]> {
     const userExists: boolean = await authorExists(authorId); //call authorExists fucntion for validation
     if(!userExists){
         return undefined; //If userExist: false, erturn un defined.
     }
 
-    const sql = `SELECT post.* FROM authors \
-                 LEFT JOIN post ON authors.id = post.authors_id \
+    const sql = `SELECT posts.* FROM authors \
+                 LEFT JOIN posts ON authors.id = posts.authors_id \
                  WHERE authors_id = $1`;
                  
     const result = await dbConnection.query<Post>(sql, [authorId]); //Async/Await: Unwrap promise
     return result.rows; //return promise<Post[]>
-};
+};*/
 
 //Insert
 export function saveAuthor(author: Author): Promise<Author> {
@@ -65,16 +66,16 @@ export function saveAuthor(author: Author): Promise<Author> {
 //Update by sql coalesce
 export function patchAuthor(author: Author): Promise<Author> {
     const sql = `UPDATE authors SET \
-                first_name = COALESCE($1, first_name), \
-                last_name = COALESCE($2, last_name), \
-                email = COALESCE($3, email) \
-                WHERE id = $4 RETURNING *`;
+                first_name = COALESCE($2, first_name), \
+                last_name = COALESCE($3, last_name), \
+                email = COALESCE($4, email) \
+                WHERE id = $1 RETURNING *`;
 
     return dbConnection.query<AuthorRow>(sql, [
+        author.id,
         author.firstName, 
         author.lastName, 
-        author.email, 
-        author.id
+        author.email
     ]).then(result => result.rows.map(row => Author.from(row))[0]);
 };
 

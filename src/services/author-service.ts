@@ -16,10 +16,11 @@ export function getAuthorById(id: number): Promise<Author> {
     return authorDao.getAllAuthorById(id);
 };
 
-//Reference post object by database id
-export function getPostByAuthorId(id: number): Promise<Post[]> {
-    return authorDao.getPostByAuthorId(id);
-};
+//?Fix logic
+/**Reference post object by database id
+export function getPostsByAuthorId(id: number): Promise<Post[]> {
+    return authorDao.getPostsByAuthorId(id);
+};*/
 
 //Create database object
 export function saveAuthor(author: any): Promise<Author> {

@@ -6,8 +6,7 @@ CREATE TABLE authors (
 	email VARCHAR(100)
 );
 
-/*Comments Here*/
-CREATE TABLE post (
+CREATE TABLE posts (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	title VARCHAR(40),
 	body VARCHAR(1000),
@@ -15,17 +14,16 @@ CREATE TABLE post (
 	authors_id INTEGER REFERENCES authors (id)
 );
 
-/*Comments Here*/
 CREATE TABLE commenting (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 	body VARCHAR(1200),
 	publish_date DATE,
 	authors_id INTEGER REFERENCES authors(id),
-	post_id INTEGER REFERENCES post(id)
+	post_id INTEGER REFERENCES posts(id)
 );
 
 
 DROP TABLE authors;
-DROP TABLE post;
+DROP TABLE posts;
 DROP TABLE commenting;
 --DELETE FROM authors WHERE id = 6;
