@@ -1,6 +1,6 @@
 import { Comment } from '../models/Comment';
 import * as commentDao from '../daos/comment-dao';
-import { Post } from '../models/Post';
+import { ArticleComments } from '../models/ArticleComments';
 /**Application Logic */
 
 
@@ -11,7 +11,7 @@ export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> retu
 };
 
 //Reference comment object by database post id
-export function getAllCommentsByPostId(postId: number): Promise<Post[]> {
+export function getAllCommentsByPostId(postId: number): Promise<ArticleComments[]> {
     return commentDao.getAllCommentsByPostId(postId);
 };
 

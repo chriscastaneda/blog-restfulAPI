@@ -25,7 +25,7 @@ INSERT INTO posts (title, body, publish_date, authors_id) VALUES
 	
 
 --Comments Table
-INSERT INTO commenting (body, publish_date, authors_id, post_id) VALUES 
+INSERT INTO commenting (comment_body, publish_date, authors_id, post_id) VALUES 
 	('Peters Comments Here', '2020-01-01'::DATE, 1, 1),
 	('Batmans Comments Here', '2020-02-01'::DATE, 2, 2), 
 	('Wades Comments Here', '2020-03-01'::DATE, 3, 3),

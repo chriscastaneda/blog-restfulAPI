@@ -16,10 +16,10 @@ CREATE TABLE posts (
 
 CREATE TABLE commenting (
 	id INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-	body VARCHAR(1200),
+	comment_body VARCHAR(1200),
 	publish_date DATE,
-	authors_id INTEGER REFERENCES authors(id),
 	post_id INTEGER REFERENCES posts(id)
+	authors_id INTEGER REFERENCES authors(id)
 );
 
 

@@ -3,8 +3,8 @@ export class Post {
     id: number;
     title: string;
     body: string;
-    publish_date: Date;
-    authors_id: number;
+    published: Date;
+    authorId: number;
 
     //Create new JS instance object from database schema
     static from(object: PostRow): Post {
@@ -15,12 +15,12 @@ export class Post {
     };
 
     //Project constructor
-    constructor(id: number, title: string, body: string, publish_date: Date, authors_id: number){
+    constructor(id: number, title: string, body: string, published: Date, authorId: number){
         this.id = id;
         this.title = title;
         this.body = body;
-        this.publish_date = publish_date;
-        this.authors_id = authors_id;
+        this.published = published;
+        this.authorId = authorId;
     };
 };
 

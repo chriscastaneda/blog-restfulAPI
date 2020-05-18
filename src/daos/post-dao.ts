@@ -1,6 +1,6 @@
 import { dbConnection} from '../daos/db';
 import { Post, PostRow } from '../models/Post';
-import { Author } from '../models/Author';
+import { AuthorsPosts, AuthorsPostsRow } from '../models/AuthorsPosts';
 /**Database query logic */
 
 
@@ -29,7 +29,7 @@ export async function getPostById(id: number): Promise<Post[]> {
 };
 
 /**Retreive posts by author id */
-export async function getPostByAuthorId(authorId: number): Promise<Author[]> {
+export async function getPostByAuthorId(authorId: number): Promise<AuthorsPosts[]> {
     const userExists: boolean = await postExists(authorId); //call postExists fucntion for validation
     /*if(!userExists){
         return undefined; //If userExist: false, erturn un defined.
@@ -42,11 +42,11 @@ export async function getPostByAuthorId(authorId: number): Promise<Author[]> {
                 LEFT JOIN authors ON posts.authors_id = authors.id \
                 WHERE authors.id = $1`;
                  
-    const result = await dbConnection.query<Author>(sql, [authorId]); //Async/Await: Unwrap promise
-    return result.rows; //return promise<Post[]>
+    const result = await dbConnection.query<AuthorsPostsRow>(sql, [authorId]); //Async/Await: Unwrap promise
+    return result.rows.map(AuthorsPosts.from); //return promise<[]>
 };
 
-//Insert
+//Create
 export function savePost(post: Post): Promise<Post> {
     const sql = `INSERT INTO posts (title, body, publish_date, authors_id) \
     VALUES ($1, $2, $3, $4) RETURNING *`; //Returning Data after insertion 
@@ -54,8 +54,8 @@ export function savePost(post: Post): Promise<Post> {
     return dbConnection.query<PostRow>(sql, [ //Filter placeholder response with [firstName, lastName, email]
         post.title,
         post.body,
-        post.publish_date,
-        post.authors_id
+        post.published,
+        post.authorId
     ]).then(result => result.rows.map(row => Post.from(row))[0]);
 };
 
@@ -71,7 +71,7 @@ export function patchPost(post: Post): Promise<Post> {
         post.id,
         post.title,
         post.body,
-        post.publish_date,
+        post.published,
     ]).then(result => result.rows.map(row => Post.from(row))[0]);
 };
 

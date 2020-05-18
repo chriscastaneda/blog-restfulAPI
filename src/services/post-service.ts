@@ -1,6 +1,6 @@
 import { Post } from '../models/Post';
 import * as postDao from '../daos/post-dao';
-import { Author } from '../models/Author';
+import { AuthorsPosts } from '../models/AuthorsPosts';
 /**Application Logic */
 
 
@@ -15,8 +15,8 @@ export function getPostById(id: number): Promise<Post[]> {
     return postDao.getPostById(id);
 };
 
-//Reference post object by database author id
-export function getPostByAuthorId(authorId: number): Promise<Author[]> {
+/*Reference post object by database author id*/
+export function getPostByAuthorId(authorId: number): Promise<AuthorsPosts[]> {
     return postDao.getPostByAuthorId(authorId);
 };
 

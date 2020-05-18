@@ -1,8 +1,7 @@
 import express from 'express';
 import * as postService from '../services/post-service';
 import { Post } from '../models/Post';
-import { Author } from '../models/Author';
-
+import { AuthorsPosts } from '../models/AuthorsPosts';
 /**Export post from database */
 export const postRouter = express.Router();
 
@@ -32,7 +31,7 @@ postRouter.get('/:id', async (request, response, next) => { //request promise wi
         posts = await postService.getPostById(id); //unwrap promise
     }catch(err){
         response.sendStatus(500); //send status promise not met
-        //console.log(err);
+        console.log(err);
         return;
     }
     
@@ -47,7 +46,7 @@ postRouter.get('/:id', async (request, response, next) => { //request promise wi
 //Read posts by author
 postRouter.get('/authors/:id', async (request, response, next) => { //request promise with async
     const authorId: number = parseInt(request.params.id);
-    let posts: Author[];
+    let posts: AuthorsPosts[];
 
     try {
         posts = await postService.getPostByAuthorId(authorId); //unwrap promise

@@ -1,6 +1,6 @@
 import { dbConnection } from '../daos/db';
 import { Comment, CommentRow } from '../models/Comment';
-import { Post } from '../models/Post';
+import { ArticleComments, ArticleCommentsRow } from '../models/ArticleComments';
 /**Database query logic */
 
 
@@ -15,8 +15,8 @@ export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> retu
     });
 };
 
-//Retrieve by post Id
-export async function getAllCommentsByPostId(postId: number): Promise<Post[]> {
+//Retrieve comments by post Id
+export async function getAllCommentsByPostId(postId: number): Promise<ArticleComments[]> {
     const sql = `SELECT \
 	            posts.title, \
                 commenting.*, \
@@ -26,8 +26,8 @@ export async function getAllCommentsByPostId(postId: number): Promise<Post[]> {
                 LEFT JOIN authors ON commenting.authors_id = authors.id \
                 WHERE posts.id = $1`;
                  
-    const result = await dbConnection.query<Post>(sql, [postId]); //Async/Await: Unwrap promise
-    return result.rows; //return promise<Post[]>
+    const result = await dbConnection.query<ArticleCommentsRow>(sql, [postId]); //Async/Await: Unwrap promise
+    return result.rows.map(ArticleComments.from); //return promise<[]>
 };
 
 
@@ -59,10 +59,10 @@ export function saveComment(comment: Comment): Promise<Comment> {
 //Update by sql coalesce
 export function patchComment(comment: Comment): Promise<Comment> {
     const sql = `UPDATE commenting SET \
-                body = COALESCE($2, body), \
+                comment_body = COALESCE($2, comment_body), \
                 publish_date = COALESCE($3, publish_date), \
-                authors_id = COALESCE($4, authors_id), \
-                post_id = COALESCE($5, post_id) \
+                post_id = COALESCE($4, post_id), \
+                authors_id = COALESCE($5, authors_id) \
                 WHERE id = $1 RETURNING *`; 
 
     return dbConnection.query<CommentRow>(sql, [

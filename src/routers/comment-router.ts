@@ -1,6 +1,6 @@
 import express from 'express';
 import * as commentService from '../services/comment-service';
-import { Post } from '../models/Post';
+import { ArticleComments } from '../models/ArticleComments';
 
 /**Export comments from database */
 export const commentRouter = express.Router();
@@ -25,13 +25,13 @@ commentRouter.get('', (request, response, next) => { //localhost:3000/comment
 /**READ comments by post id  */
 commentRouter.get('/posts/:id', async (request, response, next) => { //request promise with async
     const postId: number = parseInt(request.params.id);
-    let posts: Post[];
+    let posts: ArticleComments[];
 
     try {
         posts = await commentService.getAllCommentsByPostId(postId); //unwrap promise
     }catch(err){
         response.sendStatus(500); //send status promise not met
-        console.log(err);
+        //console.log(err);
         return;
     }
     
@@ -54,12 +54,13 @@ commentRouter.post('', (request, response, next) => { //localhost:3000/comment
             response.json(newComment); //return new object
             next();
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500);
             next();
         }); 
 });
 
+//?Change url
 /**UPDATE Alternitive */
 commentRouter.patch('', (request, response, next) => {
     const comment = request.body;
@@ -88,7 +89,7 @@ commentRouter.delete('/:id', (request, response, next) => {
             if(!comment){ 
                 response.sendStatus(404);//if object does not exist
             }else{
-                console.log(`Comment deleted at post id:${id}`);
+                //console.log(`Comment deleted at post id:${id}`);
                 response.json(comment);
             }
         }).catch(err => {
