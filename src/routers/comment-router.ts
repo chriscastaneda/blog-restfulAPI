@@ -83,7 +83,7 @@ commentRouter.patch('', (request, response, next) => {
 commentRouter.delete('/:id', (request, response, next) => {
     const id = parseInt(request.params.id);
 
-    const comment = commentService.deleteCommentById(id)
+    commentService.deleteCommentById(id)
         .then(comment => {
             if(!comment){ 
                 response.sendStatus(404);//if object does not exist

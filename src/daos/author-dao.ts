@@ -1,6 +1,5 @@
 import { dbConnection} from '../daos/db';
 import { Author, AuthorRow } from '../models/Author';
-import { Post } from '../models/Post';
 /**Database query logic */
 
 
@@ -34,22 +33,6 @@ export async function authorExists(authorId: number): Promise<boolean> {
     const result = await dbConnection.query<Exists>(sql, [authorId]);
     return result.rows[0].exists; //if boolean: 0, user exists
 };
-
-//?Fix logic
-/**Retrive posts by authors id
-export async function getPostsByAuthorId(authorId: number): Promise<Post[]> {
-    const userExists: boolean = await authorExists(authorId); //call authorExists fucntion for validation
-    if(!userExists){
-        return undefined; //If userExist: false, erturn un defined.
-    }
-
-    const sql = `SELECT posts.* FROM authors \
-                 LEFT JOIN posts ON authors.id = posts.authors_id \
-                 WHERE authors_id = $1`;
-                 
-    const result = await dbConnection.query<Post>(sql, [authorId]); //Async/Await: Unwrap promise
-    return result.rows; //return promise<Post[]>
-};*/
 
 //Insert
 export function saveAuthor(author: Author): Promise<Author> {

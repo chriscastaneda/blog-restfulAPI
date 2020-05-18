@@ -1,6 +1,5 @@
 import { Author } from '../models/Author';
 import * as authorDao from '../daos/author-dao';
-import { Post } from '../models/Post';
 /**Application Logic */
 
 
@@ -15,12 +14,6 @@ export function getAuthorById(id: number): Promise<Author> {
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthorById(id);
 };
-
-//?Fix logic
-/**Reference post object by database id
-export function getPostsByAuthorId(id: number): Promise<Post[]> {
-    return authorDao.getPostsByAuthorId(id);
-};*/
 
 //Create database object
 export function saveAuthor(author: any): Promise<Author> {

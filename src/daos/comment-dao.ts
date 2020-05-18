@@ -1,4 +1,4 @@
-import { dbConnection} from '../daos/db';
+import { dbConnection } from '../daos/db';
 import { Comment, CommentRow } from '../models/Comment';
 import { Post } from '../models/Post';
 /**Database query logic */
