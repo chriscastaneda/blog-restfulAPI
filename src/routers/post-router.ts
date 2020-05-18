@@ -3,10 +3,6 @@ import * as postService from '../services/post-service';
 import { Post } from '../models/Post';
 import { Author } from '../models/Author';
 
-
-
-
-import { Authorcopy, AuthorcopyRow } from '../models/Authorcopy';
 /**Export post from database */
 export const postRouter = express.Router();
 
@@ -27,27 +23,6 @@ postRouter.get('', (request, response, next) => { //localhost:3000/post
         });
 });
 
-/**READ post by Id
-postRouter.get('/:id', (request, response, next) => { //localhost:3000/posts/id
-    const id: number = parseInt(request.params.id); //request id as integer
-
-    const post = postService.getPostById(id)
-        .then(post => {
-            if(!post){
-                response.sendStatus(404); //if RETURN object does not exist
-            }else{
-                response.json(post);
-            }
-            next()
-        }).catch(err => {
-            //console.log(err);
-            response.sendStatus(500); //if recieving datbase issue's
-            next();
-        });
-});*/
-
-
-//!
 /**READ post by Id */
 postRouter.get('/:id', async (request, response, next) => { //request promise with async
     const id: number = parseInt(request.params.id);
@@ -69,31 +44,7 @@ postRouter.get('/:id', async (request, response, next) => { //request promise wi
     next();
 });
 
-
-
-
-//?Authorcopy
-/**Read posts by author
-postRouter.get('/authors/:id', async (request, response, next) => { //request promise with async
-    const authorId: number = parseInt(request.params.id);
-    let posts: Authorcopy[];
-
-    try {
-        posts = await postService.getPostByAuthorId(authorId); //unwrap promise
-    }catch(err){
-        response.sendStatus(500); //send status promise not met
-        //console.log(err);
-        return;
-    }
-    
-    if(!posts){
-        response.sendStatus(404); //return undefined if author does not exist
-    }else{
-        response.json(posts);
-    }
-    next();
-}); */
-//?Author
+//Read posts by author
 postRouter.get('/authors/:id', async (request, response, next) => { //request promise with async
     const authorId: number = parseInt(request.params.id);
     let posts: Author[];
@@ -113,14 +64,6 @@ postRouter.get('/authors/:id', async (request, response, next) => { //request pr
     }
     next();
 }); 
-
-
-
-
-
-
-
-
 
 /**CREATE */
 postRouter.post('', (request, response, next) => { //localhost:3000/post

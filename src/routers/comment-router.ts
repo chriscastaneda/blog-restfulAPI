@@ -22,25 +22,6 @@ commentRouter.get('', (request, response, next) => { //localhost:3000/comment
         });
 });
 
-/**READ by post id 
-commentRouter.get('/posts/id', (request, response, next) => { //localhost:3000/comment/id
-    const id = parseInt(request.params.id); //request id as integer
-
-    const comment = commentService.getCommentById(id)
-        .then(comment => {
-            if(!comment){
-                response.sendStatus(404); //if RETURN object does not exist
-            }else{
-                response.json(comment);
-            }
-            next();
-        }).catch(err => {
-            //console.log(err);
-            response.sendStatus(500); //if recieving datbase issue's
-            next();
-        });
-});*/
-//!
 /**READ comments by post id  */
 commentRouter.get('/posts/:id', async (request, response, next) => { //request promise with async
     const postId: number = parseInt(request.params.id);

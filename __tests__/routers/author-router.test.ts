@@ -37,7 +37,7 @@ describe('GET: /authors',() => {
             .expect(500);
     });
 });
-
+/*
 describe('POST: /author', () => {
     //Post success test
     test('Successful create should return status 201', async () => {
@@ -100,7 +100,7 @@ describe('GET: /authors/:id', () => {
             .expect(500);
     });
 });
-
+*/
 
 /**
  * test GET /people/:id

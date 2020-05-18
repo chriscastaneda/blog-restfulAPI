@@ -10,12 +10,6 @@ export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> retu
     return commentDao.getAllComments();
 };
 
-/*Reference comment object by database id
-export function getCommentById(id: number): Promise<Comment> {
-    //Apply internal logic here(user privalleges/rules/authentication)
-    return commentDao.getAllCommentById(id);
-};*/
-//!
 //Reference comment object by database post id
 export function getAllCommentsByPostId(postId: number): Promise<Post[]> {
     return commentDao.getAllCommentsByPostId(postId);

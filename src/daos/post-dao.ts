@@ -1,8 +1,6 @@
 import { dbConnection} from '../daos/db';
 import { Post, PostRow } from '../models/Post';
 import { Author } from '../models/Author';
-
-import { Authorcopy, AuthorcopyRow } from '../models/Authorcopy';
 /**Database query logic */
 
 
@@ -17,19 +15,7 @@ export function getAllPosts(): Promise<Post[]> { //Promise<Post[]> returning pro
     });
 };
 
-/**Retrieve post by id
-export function getPostById(id: number): Promise<Post> {
-    const sql = `SELECT \
-                posts.*, \
-                authors.first_name, authors.last_name \
-                FROM posts \
-                LEFT JOIN authors ON posts.authors_id = authors.id \
-                WHERE posts.id = $1`; //Parameterize queries
-
-    return dbConnection.query<PostRow>(sql, [id]) //Filter response for only [id]
-        .then(result => result.rows.map(row => Post.from(row))[0]); //Limit result to 1 object by index[0]
-};*/
-//!
+//Retrieve post by id
 export async function getPostById(id: number): Promise<Post[]> {
     const sql = `SELECT \
                 posts.*, \
@@ -42,27 +28,6 @@ export async function getPostById(id: number): Promise<Post[]> {
     return result.rows; //return promise<Post[]>
 };
 
-
-
-//?Authorcopy
-/**Retreive posts by author id
-export async function getPostByAuthorId(authorId: number): Promise<Authorcopy[]> {
-    const userExists: boolean = await postExists(authorId); //call postExists fucntion for validation
-    if(!userExists){
-        return undefined; //If userExist: false, erturn un defined.
-    }
-
-    const sql = `SELECT \
-                posts.*, \
-	            authors.first_name, authors.last_name \
-                FROM posts \
-                LEFT JOIN authors ON posts.authors_id = authors.id \
-                WHERE authors.id = $1`;
-                 
-    const result = await dbConnection.query<Authorcopy>(sql, [authorId]); //Async/Await: Unwrap promise
-    return result.rows; //return promise<Post[]>
-}; */
-//?Author
 /**Retreive posts by author id */
 export async function getPostByAuthorId(authorId: number): Promise<Author[]> {
     const userExists: boolean = await postExists(authorId); //call postExists fucntion for validation
@@ -81,31 +46,6 @@ export async function getPostByAuthorId(authorId: number): Promise<Author[]> {
     return result.rows; //return promise<Post[]>
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Validation interface
-interface Exists {
-    exists: boolean;
-};
-//Valid post by id
-export async function postExists(postId: number): Promise<boolean> {
-    const sql = `SELECT EXISTS(SELECT id FROM posts WHERE id = $1)`; //Validate user via database by boolean
-    
-    const result = await dbConnection.query<Exists>(sql, [postId]);
-    return result.rows[0].exists; //if boolean: 0, user exists
-};
-
 //Insert
 export function savePost(post: Post): Promise<Post> {
     const sql = `INSERT INTO posts (title, body, publish_date, authors_id) \
@@ -114,8 +54,8 @@ export function savePost(post: Post): Promise<Post> {
     return dbConnection.query<PostRow>(sql, [ //Filter placeholder response with [firstName, lastName, email]
         post.title,
         post.body,
-        post.published,
-        post.authorId
+        post.publish_date,
+        post.authors_id
     ]).then(result => result.rows.map(row => Post.from(row))[0]);
 };
 
@@ -131,7 +71,7 @@ export function patchPost(post: Post): Promise<Post> {
         post.id,
         post.title,
         post.body,
-        post.published,
+        post.publish_date,
     ]).then(result => result.rows.map(row => Post.from(row))[0]);
 };
 
@@ -141,4 +81,20 @@ export function deletePostById(id: number): Promise<Post> {
 
     return dbConnection.query<PostRow>(sql, [id])
         .then(result => result.rows.map(row => Post.from(row))[0]);
+};
+
+
+
+
+
+//Validation interface
+interface Exists {
+    exists: boolean;
+};
+//Valid post by id
+export async function postExists(postId: number): Promise<boolean> {
+    const sql = `SELECT EXISTS(SELECT id FROM posts WHERE id = $1)`; //Validate user via database by boolean
+    
+    const result = await dbConnection.query<Exists>(sql, [postId]);
+    return result.rows[0].exists; //if boolean: 0, user exists
 };

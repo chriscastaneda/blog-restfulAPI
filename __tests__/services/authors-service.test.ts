@@ -28,7 +28,7 @@ describe('GET: /authors', () => {
         expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
         expect(result).toBeInstanceOf(Author); //Transformed to person in result
     });
-
+/*
     //Object Properties Failure Test(WhiteBox)
     test('Expected 422 returned if no firstName provided', async () => {
 
@@ -116,8 +116,12 @@ describe('GET: /authors', () => {
 
         expect(result.extraFieldInput).not.toBeDefined(); //Call extra property.
     });
+
+    */
 });
 
+
+/*
 describe('PATCH: /authors', () => {
     //Patch success test
     test('Test object transformed to Person object', async () => {
@@ -154,4 +158,4 @@ describe('PATCH: /authors', () => {
             expect(err).toBeTruthy();
         }
     });
-});
+});*/

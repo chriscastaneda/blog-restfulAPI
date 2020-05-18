@@ -15,18 +15,10 @@ export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> retu
     });
 };
 
-/*Retrieve by post Id
-export function getAllCommentById(id: number): Promise<Comment> {
-    const sql = 'SELECT * FROM commenting WHERE id = $1'; //Parameterize queries
-
-    return dbConnection.query<CommentRow>(sql, [id]) //Filter response for only [id]
-        .then(result => result.rows.map(row => Comment.from(row))[0]); //Limit result to 1 object by index[0]
-};*/
-//!
 //Retrieve by post Id
 export async function getAllCommentsByPostId(postId: number): Promise<Post[]> {
     const sql = `SELECT \
-	            posts.id, posts.title, \
+	            posts.title, \
                 commenting.*, \
 	            authors.first_name, authors.last_name \
                 FROM posts \
