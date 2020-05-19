@@ -58,8 +58,7 @@ postRouter.get('/authors/:id', async (request, response, next) => { //request pr
     
     if(!posts){
         response.sendStatus(404); //return undefined if author does not exist
-    }else{//? Added .set for testing
-        //response.set('content-type', 'application/json; charset=utf-8');
+    }else{
         response.json(posts);
     }
     next();

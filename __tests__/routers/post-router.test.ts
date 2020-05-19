@@ -80,18 +80,18 @@ describe('GET: /posts/:id', () => {
     });
 });
 
-/**Read posts by author 
+/**Read posts by author */
 describe('GET: posts/authors/:id', () => {
     //Get success test
-    test('Failed read should return status 404', async () => {
+    test('Failed read should return status 200', async () => {
         mockPostService.getPostByAuthorId.mockImplementation( async () => ({}));
 
         await request(app)
-            .get('/authors/1')
+            .get('/posts/authors/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });
-});*/
+});
 
 /**CREATE */
 describe('POST: /posts', () => {

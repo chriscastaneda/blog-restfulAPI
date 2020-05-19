@@ -50,13 +50,13 @@ describe('GET: /comments',() => {
 });
 
 /**READ comments by post id */
-describe('GET: /posts/:id', () => {
+describe('GET: /comments/posts/:id', () => {
     //Get success test
     test('Returns normal app with status 200', async () => {
         mockCommentService.getAllCommentsByPostId.mockImplementation( async () => ({}));
 
         await request(app)
-            .get('/posts/1')
+            .get('/comments/posts/1')
             .expect(200)
             .expect('content-type', 'application/json; charset=utf-8')
     });
@@ -66,7 +66,7 @@ describe('GET: /posts/:id', () => {
         mockCommentService.getAllCommentsByPostId.mockImplementation( async () => {0}); //insert value 0 as object
         
         await request(app)
-            .get('/posts/89')
+            .get('/comments/posts/89')
             .expect(404);
     });
 
@@ -75,7 +75,7 @@ describe('GET: /posts/:id', () => {
         mockCommentService.getAllCommentsByPostId.mockImplementation( async () => {throw new Error()});
         
         await request(app)
-            .get('/posts/40')
+            .get('/comments/posts/40')
             .expect(500);
     });
 });

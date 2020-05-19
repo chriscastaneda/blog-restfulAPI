@@ -7,7 +7,7 @@ jest.mock('../../src/daos/comment-dao');
 
 /**Cast methods from commentDao file */
 const mockCommentDao = commentDao as any;
-
+ 
 
 
 

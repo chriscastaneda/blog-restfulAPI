@@ -8,7 +8,7 @@ jest.mock('../../src/daos/post-dao');
 /**Cast methods from postDao file */
 const mockPostDao = postDao as any;
 
-
+ 
 
 
 /**Creating fake database object */

@@ -30,9 +30,8 @@ commentRouter.get('/posts/:id', async (request, response, next) => { //request p
     try {
         posts = await commentService.getAllCommentsByPostId(postId); //unwrap promise
     }catch(err){ 
-        response.set('content-type', 'application/json');//?Added in Testing
         response.sendStatus(500); //send status promise not met
-        console.log(err);
+        //console.log(err);
         return;
     }
     
@@ -73,7 +72,7 @@ commentRouter.patch('', (request, response, next) => {
                 response.json(updatedComment);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500);
         }).finally(() => {
             next();
