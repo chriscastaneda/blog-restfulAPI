@@ -12,7 +12,10 @@ const mockAuthorDao = authorDao as any;
 
 
 /**Creating fake database object */
-describe('GET: /authors', () => {
+
+
+/**CREATE */
+describe('POST: /authors', () => {
     
     //Object Success Test (BlackBox)
     test('Test object transformed to Person object', async () => {
@@ -28,7 +31,7 @@ describe('GET: /authors', () => {
         expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
         expect(result).toBeInstanceOf(Author); //Transformed to person in result
     });
-/*
+
     //Object Properties Failure Test(WhiteBox)
     test('Expected 422 returned if no firstName provided', async () => {
 
@@ -116,15 +119,13 @@ describe('GET: /authors', () => {
 
         expect(result.extraFieldInput).not.toBeDefined(); //Call extra property.
     });
-
-    */
 });
 
 
-/*
+/**UPDATE */
 describe('PATCH: /authors', () => {
     //Patch success test
-    test('Test object transformed to Person object', async () => {
+    test('Successful patch', async () => {
         expect.assertions(1);
         //mockAuthorDao.saveAuthor.mockImplementation(input => input);
 
@@ -158,4 +159,46 @@ describe('PATCH: /authors', () => {
             expect(err).toBeTruthy();
         }
     });
-});*/
+});
+
+
+
+/**READ ALL*/
+describe('GET: /authors', () => {
+    //Read success test
+    test('Throw new Error status 400', async () => {
+        expect.assertions(1);
+        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
+
+        const result = await authorService.getAllAuthors();
+
+        try{
+            expect(result).toContain([]);
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+    });
+});
+
+
+/**DELETE */
+/**READ ALL*/
+describe('DELETE: /authors/:id', () => {
+    //Read success test
+    test('Successful delete of id', async () => {
+        expect.assertions(1);
+        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
+
+        const result = await authorService.deleteAuthorById(1);
+
+        try{
+            expect(result).toContain({});
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+    });
+});

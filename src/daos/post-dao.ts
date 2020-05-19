@@ -28,12 +28,28 @@ export async function getPostById(id: number): Promise<Post[]> {
     return result.rows; //return promise<Post[]>
 };
 
+
+
+
+
+//Validation interface
+interface Exists {
+    exists: boolean;
+};
+//Valid post by id
+export async function postExists(postId: number): Promise<boolean> {
+    const sql = `SELECT EXISTS(SELECT id FROM posts WHERE id = $1)`; //Validate user via database by boolean
+    
+    const result = await dbConnection.query<Exists>(sql, [postId]);
+    return result.rows[0].exists; //if boolean: 0, user exists
+};
+
 /**Retreive posts by author id */
 export async function getPostByAuthorId(authorId: number): Promise<AuthorsPosts[]> {
     const userExists: boolean = await postExists(authorId); //call postExists fucntion for validation
-    /*if(!userExists){
+    if(!userExists){
         return undefined; //If userExist: false, erturn un defined.
-    }*/
+    }
 
     const sql = `SELECT \
                 posts.*, \
@@ -81,20 +97,4 @@ export function deletePostById(id: number): Promise<Post> {
 
     return dbConnection.query<PostRow>(sql, [id])
         .then(result => result.rows.map(row => Post.from(row))[0]);
-};
-
-
-
-
-
-//Validation interface
-interface Exists {
-    exists: boolean;
-};
-//Valid post by id
-export async function postExists(postId: number): Promise<boolean> {
-    const sql = `SELECT EXISTS(SELECT id FROM posts WHERE id = $1)`; //Validate user via database by boolean
-    
-    const result = await dbConnection.query<Exists>(sql, [postId]);
-    return result.rows[0].exists; //if boolean: 0, user exists
 };

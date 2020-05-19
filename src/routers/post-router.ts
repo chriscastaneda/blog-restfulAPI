@@ -31,7 +31,7 @@ postRouter.get('/:id', async (request, response, next) => { //request promise wi
         posts = await postService.getPostById(id); //unwrap promise
     }catch(err){
         response.sendStatus(500); //send status promise not met
-        console.log(err);
+        //console.log(err);
         return;
     }
     
@@ -58,7 +58,8 @@ postRouter.get('/authors/:id', async (request, response, next) => { //request pr
     
     if(!posts){
         response.sendStatus(404); //return undefined if author does not exist
-    }else{
+    }else{//? Added .set for testing
+        //response.set('content-type', 'application/json; charset=utf-8');
         response.json(posts);
     }
     next();
@@ -92,7 +93,7 @@ postRouter.patch('', (request, response, next) => {
                 response.json(updatedPost);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500);
         }).finally(() => {
             next();
@@ -108,11 +109,11 @@ postRouter.delete('/:id', (request, response, next) => {
             if(!post){ 
                 response.sendStatus(404);//if object does not exist
             }else{
-                console.log(`Post deleted at id:${id}`);
+                //console.log(`Post deleted at id:${id}`);
                 response.json(post);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500); //if recieving datbase issue's
             next();
         });

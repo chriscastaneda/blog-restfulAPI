@@ -1,17 +1,17 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { authorRouter } from '../../src/routers/author-router';
-import * as authorService from '../../src/services/author-service';
+import { commentRouter } from '../../src/routers/comment-router';
+import * as commentService from '../../src/services/comment-service';
 import request from 'supertest';
 
 /**Mock Service Layer */
-jest.mock('../../src/services/author-service');
-const mockAuthorService = authorService as any;
+jest.mock('../../src/services/comment-service');
+const mockCommentService = commentService as any;
 
 /**Test Express server & middleware */
 const app = express();
 app.use(bodyParser.json());
-app.use('/authors', authorRouter);
+app.use('/comments', commentRouter);
 
 
 
@@ -28,63 +28,63 @@ app.use('/authors', authorRouter);
 /**Request fake http methods */
 
 /**READ All */
-describe('GET: /authors',() => {
+describe('GET: /comments',() => {
     //GET success test
     test('Returns normal app with status 200', async () => {
-        mockAuthorService.getAllAuthors.mockImplementation( async () => []);//mockAuthorService returning Object
+        mockCommentService.getAllComments.mockImplementation( async () => []);//mockCommentService returning Object
         
         await request(app)
-            .get('/authors') //Send request
+            .get('/comments') //Send request
             .expect('content-type', 'application/json; charset=utf-8') // Expect in response content-type JSON
             .expect(200); //SendStatus(200)
     });
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.getAllAuthors.mockImplementation( async () => {throw new Error()});
+        mockCommentService.getAllComments.mockImplementation( async () => {throw new Error()});
         
         await request(app)
-            .get('/authors')
+            .get('/comments')
             .expect(500);
     });
 });
 
-/**READ by id */
-describe('GET: /authors/:id', () => {
+/**READ comments by post id */
+describe('GET: /posts/:id', () => {
     //Get success test
     test('Returns normal app with status 200', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => ({}));
+        mockCommentService.getAllCommentsByPostId.mockImplementation( async () => ({}));
 
         await request(app)
-            .get('/authors/1')
+            .get('/posts/1')
+            .expect(200)
             .expect('content-type', 'application/json; charset=utf-8')
-            .expect(200);
     });
 
     //Expected server error test
     test('Returns 404 status from throw error', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => {0}); //insert value 0 as object
+        mockCommentService.getAllCommentsByPostId.mockImplementation( async () => {0}); //insert value 0 as object
         
         await request(app)
-            .get('/authors/1')
+            .get('/posts/89')
             .expect(404);
     });
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => {throw new Error()});
+        mockCommentService.getAllCommentsByPostId.mockImplementation( async () => {throw new Error()});
         
         await request(app)
-            .get('/authors/40')
+            .get('/posts/40')
             .expect(500);
     });
 });
 
 /**CREATE */
-describe('POST: /authors', () => {
-    //Post success test
+describe('POST: /comments', () => {
+    //Comment success test
     test('Successful create should return status 201', async () => {
-        mockAuthorService.saveAuthor.mockImplementation(async () => ({}));
+        mockCommentService.saveComment.mockImplementation(async () => ({}));
         const payload = {
             firstName: 'Test',
             lastName: 'Create',
@@ -92,7 +92,7 @@ describe('POST: /authors', () => {
         };
 
         await request(app)
-            .post('/authors')
+            .post('/comments')
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(201);
@@ -100,7 +100,7 @@ describe('POST: /authors', () => {
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.saveAuthor.mockImplementation(async () => {throw new Error()}); 
+        mockCommentService.saveComment.mockImplementation(async () => {throw new Error()}); 
         const payload = {
             firstName: 'Test',
             lastName: 'Create',
@@ -108,17 +108,17 @@ describe('POST: /authors', () => {
         };
 
         await request(app)
-            .post('/authors')
+            .post('/comments')
             .send(payload)
             .expect(500);
     });
 });
 
 /**UPDATE */
-describe('PATCH: /authors', () => {
-    //Post success test
+describe('PATCH: /comments', () => {
+    //comment success test
     test('Successful Patch', async () => {
-        mockAuthorService.patchAuthor.mockImplementation(async () => ({}));
+        mockCommentService.patchComment.mockImplementation(async () => ({}));
         const payload = {
             id: '6',
             lastName: 'object',
@@ -126,7 +126,7 @@ describe('PATCH: /authors', () => {
         };
 
         await request(app)
-            .patch('/authors')
+            .patch('/comments')
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
@@ -138,10 +138,10 @@ describe('PATCH: /authors', () => {
 describe('DELETE: /:id', () => {
     //Get success test
     test('DELETE returns status 200', async () => {
-        mockAuthorService.deleteAuthorById.mockImplementation( async () => ({}));
+        mockCommentService.deleteCommentById.mockImplementation( async () => ({}));
 
         await request(app)
-            .delete('/authors/1')
+            .delete('/comments/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });

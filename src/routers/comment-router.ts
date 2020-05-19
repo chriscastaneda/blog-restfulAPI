@@ -29,9 +29,10 @@ commentRouter.get('/posts/:id', async (request, response, next) => { //request p
 
     try {
         posts = await commentService.getAllCommentsByPostId(postId); //unwrap promise
-    }catch(err){
+    }catch(err){ 
+        response.set('content-type', 'application/json');//?Added in Testing
         response.sendStatus(500); //send status promise not met
-        //console.log(err);
+        console.log(err);
         return;
     }
     
@@ -60,7 +61,6 @@ commentRouter.post('', (request, response, next) => { //localhost:3000/comment
         }); 
 });
 
-//?Change url
 /**UPDATE Alternitive */
 commentRouter.patch('', (request, response, next) => {
     const comment = request.body;

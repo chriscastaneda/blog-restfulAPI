@@ -1,17 +1,17 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import { authorRouter } from '../../src/routers/author-router';
-import * as authorService from '../../src/services/author-service';
+import { postRouter } from '../../src/routers/post-router';
+import * as postService from '../../src/services/post-service';
 import request from 'supertest';
 
 /**Mock Service Layer */
-jest.mock('../../src/services/author-service');
-const mockAuthorService = authorService as any;
+jest.mock('../../src/services/post-service');
+const mockPostService = postService as any;
 
 /**Test Express server & middleware */
 const app = express();
 app.use(bodyParser.json());
-app.use('/authors', authorRouter);
+app.use('/posts', postRouter);
 
 
 
@@ -28,63 +28,76 @@ app.use('/authors', authorRouter);
 /**Request fake http methods */
 
 /**READ All */
-describe('GET: /authors',() => {
+describe('GET: /posts',() => {
     //GET success test
     test('Returns normal app with status 200', async () => {
-        mockAuthorService.getAllAuthors.mockImplementation( async () => []);//mockAuthorService returning Object
+        mockPostService.getAllPosts.mockImplementation( async () => []);//mockPostService returning Object
         
         await request(app)
-            .get('/authors') //Send request
+            .get('/posts') //Send request
             .expect('content-type', 'application/json; charset=utf-8') // Expect in response content-type JSON
             .expect(200); //SendStatus(200)
     });
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.getAllAuthors.mockImplementation( async () => {throw new Error()});
+        mockPostService.getAllPosts.mockImplementation( async () => {throw new Error()});
         
         await request(app)
-            .get('/authors')
+            .get('/posts')
             .expect(500);
     });
 });
 
 /**READ by id */
-describe('GET: /authors/:id', () => {
+describe('GET: /posts/:id', () => {
     //Get success test
     test('Returns normal app with status 200', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => ({}));
+        mockPostService.getPostById.mockImplementation( async () => ({}));
 
         await request(app)
-            .get('/authors/1')
+            .get('/posts/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });
 
     //Expected server error test
     test('Returns 404 status from throw error', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => {0}); //insert value 0 as object
+        mockPostService.getPostById.mockImplementation( async () => {0}); //insert value 0 as object
         
         await request(app)
-            .get('/authors/1')
+            .get('/posts/1')
             .expect(404);
     });
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.getAuthorById.mockImplementation( async () => {throw new Error()});
+        mockPostService.getPostById.mockImplementation( async () => {throw new Error()});
         
         await request(app)
-            .get('/authors/40')
+            .get('/posts/40')
             .expect(500);
     });
 });
 
+/**Read posts by author 
+describe('GET: posts/authors/:id', () => {
+    //Get success test
+    test('Failed read should return status 404', async () => {
+        mockPostService.getPostByAuthorId.mockImplementation( async () => ({}));
+
+        await request(app)
+            .get('/authors/1')
+            .expect('content-type', 'application/json; charset=utf-8')
+            .expect(200);
+    });
+});*/
+
 /**CREATE */
-describe('POST: /authors', () => {
+describe('POST: /posts', () => {
     //Post success test
     test('Successful create should return status 201', async () => {
-        mockAuthorService.saveAuthor.mockImplementation(async () => ({}));
+        mockPostService.savePost.mockImplementation(async () => ({}));
         const payload = {
             firstName: 'Test',
             lastName: 'Create',
@@ -92,7 +105,7 @@ describe('POST: /authors', () => {
         };
 
         await request(app)
-            .post('/authors')
+            .post('/posts')
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(201);
@@ -100,7 +113,7 @@ describe('POST: /authors', () => {
 
     //Expected server error test
     test('Returns 500 status from throw error', async () => {
-        mockAuthorService.saveAuthor.mockImplementation(async () => {throw new Error()}); 
+        mockPostService.savePost.mockImplementation(async () => {throw new Error()}); 
         const payload = {
             firstName: 'Test',
             lastName: 'Create',
@@ -108,17 +121,17 @@ describe('POST: /authors', () => {
         };
 
         await request(app)
-            .post('/authors')
+            .post('/posts')
             .send(payload)
             .expect(500);
     });
 });
 
 /**UPDATE */
-describe('PATCH: /authors', () => {
+describe('PATCH: /posts', () => {
     //Post success test
     test('Successful Patch', async () => {
-        mockAuthorService.patchAuthor.mockImplementation(async () => ({}));
+        mockPostService.patchPost.mockImplementation(async () => ({}));
         const payload = {
             id: '6',
             lastName: 'object',
@@ -126,7 +139,7 @@ describe('PATCH: /authors', () => {
         };
 
         await request(app)
-            .patch('/authors')
+            .patch('/Posts')
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
@@ -138,10 +151,10 @@ describe('PATCH: /authors', () => {
 describe('DELETE: /:id', () => {
     //Get success test
     test('DELETE returns status 200', async () => {
-        mockAuthorService.deleteAuthorById.mockImplementation( async () => ({}));
+        mockPostService.deletePostById.mockImplementation( async () => ({}));
 
         await request(app)
-            .delete('/authors/1')
+            .delete('/posts/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });
