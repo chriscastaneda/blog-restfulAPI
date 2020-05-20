@@ -78,7 +78,7 @@ describe('GET: /posts/:id', () => {
             .get('/posts/40')
             .expect(500);
     });
-});
+}); 
 
 /**Read posts by author */
 describe('GET: posts/authors/:id', () => {
@@ -90,6 +90,24 @@ describe('GET: posts/authors/:id', () => {
             .get('/posts/authors/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockPostService.getPostByAuthorId.mockImplementation( async () => {0}); //insert value 0 as object
+        
+        await request(app)
+            .get('/posts/authors/1')
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockPostService.getPostByAuthorId.mockImplementation( async () => {throw new Error()});
+        
+        await request(app)
+            .get('/posts/authors/40')
+            .expect(500);
     });
 });
 
@@ -134,15 +152,45 @@ describe('PATCH: /posts', () => {
         mockPostService.patchPost.mockImplementation(async () => ({}));
         const payload = {
             id: '6',
-            lastName: 'object',
-            email: "new.object@email.com"
+            title: 'object',
+            body: "content"
         };
 
         await request(app)
-            .patch('/Posts')
+            .patch('/posts')
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+
+     //Expected server error test
+     test('Returns 404 status from throw error', async () => {
+        mockPostService.patchPost.mockImplementation( async () => {0}); //insert value 0 as object
+        const payload = {
+            id: '1',
+            title: 'object',
+            body: "content"
+        };
+
+        await request(app)
+            .patch('/posts')
+            .send(payload)
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockPostService.patchPost.mockImplementation(async () => {throw new Error()}); 
+        const payload = {
+            id: 'F',
+            title: 'object',
+            body: "content"
+        };
+
+        await request(app)
+            .patch('/posts') 
+            .send(payload)
+            .expect(500);
     });
 });
 
@@ -157,5 +205,23 @@ describe('DELETE: /:id', () => {
             .delete('/posts/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockPostService.deletePostById.mockImplementation( async () => {0}); //insert value 0 as object
+        
+        await request(app)
+            .delete('/posts/1')
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockPostService.deletePostById.mockImplementation( async () => {throw new Error()});
+        
+        await request(app)
+            .delete('/posts/1') 
+            .expect(500); 
     });
 });

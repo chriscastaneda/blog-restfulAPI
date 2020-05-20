@@ -45,8 +45,7 @@ describe('GET: /posts/:id', () => {
         //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
         //expect(result).toBeInstanceOf(Author); //Transformed to person in result
         
-    });
-    
+    }); 
 });
 
 /**READ by author id */

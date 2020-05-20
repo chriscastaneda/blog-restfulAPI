@@ -27,7 +27,7 @@ describe('GET: /authors', () => {
             expect(err).toBeDefined();
         }
     });
-});
+}); 
 
 /**READ by id */
 describe('GET: /authors/:id', () => {

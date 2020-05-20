@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./src/app.ts",
-    "test": "jest --verbose --watch --coverage"
+    "test": "jest --verbose --watch --coverage --watchAll"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "bugs": {
     "url": "https://github.com/chriscastaneda/rev-p0-restfulAPI/issues"
   },
+
   "homepage": "https://github.com/chriscastaneda/rev-p0-restfulAPI#readme",
   "devDependencies": {
     "@types/express": "^4.17.6",

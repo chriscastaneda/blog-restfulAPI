@@ -13,7 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/authors', authorRouter);
 
- 
+  
 
 
 /**
@@ -131,7 +131,7 @@ describe('PATCH: /authors', () => {
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });
-
+ 
     //Expected server error test
     test('Returns 404 status from throw error', async () => {
         mockAuthorService.patchAuthor.mockImplementation( async () => {0}); //insert value 0 as object
