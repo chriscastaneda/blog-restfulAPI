@@ -15,7 +15,7 @@ export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returni
 };
 
 //Retrieve by Id
-export function getAllAuthorById(id: number): Promise<Author> {
+export function getAuthorById(id: number): Promise<Author> {
     const sql = 'SELECT * FROM authors WHERE id = $1'; //Parameterize queries
 
     return dbConnection.query<AuthorRow>(sql, [id]) //Filter response for only [id]

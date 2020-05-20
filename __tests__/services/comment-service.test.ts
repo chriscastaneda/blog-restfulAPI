@@ -13,6 +13,41 @@ const mockCommentDao = commentDao as any;
 
 /**Creating fake database object */
 
+/**READ ALL*/
+describe('GET: /comments', () => {
+    //Read success test
+    test('Successful get all comments by id status 200', async () => { 
+        expect.assertions(1);
+        mockCommentDao.getAllComments.mockImplementation(async () => ([]));
+        const result = await commentService.getAllComments();
+
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+    });
+});
+
+/**READ by id */
+describe('GET: /comments/posts/:id', () => {
+    //Read success test
+    test('Successful get comments by post id status 200', async () => {
+        expect.assertions(1);
+        mockCommentDao.getAllCommentsByPostId.mockImplementation(async () => ({}));
+        const result = await commentService.getAllCommentsByPostId(11);
+        
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+        
+    });
+    
+});
 
 /**CREATE */
 describe('POST: /comment', () => {
@@ -23,9 +58,9 @@ describe('POST: /comment', () => {
 
         const payload = {
             comment: 'Title',
-            published: 2020-0o1-0o1,
-            postId: 1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            postId: '1',
+            authorId: '1'
         };
         const result = await commentService.saveComment(payload);
 
@@ -59,8 +94,8 @@ describe('POST: /comment', () => {
         expect.assertions(1); //cleaner assertion syntax replacing mockCommentDao function
         const payload = {
             comment: 'Title',
-            published: 2020-0o1-0o1,
-            postId: 1
+            published: '2020-0o1-0o1',
+            postId: '1'
         }
 
         let expectedError = undefined;
@@ -79,7 +114,7 @@ describe('POST: /comment', () => {
         expect.assertions(1); //cleaner assertion syntax replacing mockCommentDao function
         const payload = {
             comment: 'Title',
-            published: 2020-0o1-0o1,
+            published: '2020-0o1-0o1',
             postId: 1
         }
 
@@ -100,9 +135,9 @@ describe('POST: /comment', () => {
         const payload = {
             id: 15,
             comment: 'Title',
-            published: 2020-0o1-0o1,
-            postId: 1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            postId: '1',
+            authorId: '1'
         };
         const result = await commentService.saveComment(payload);
 
@@ -115,9 +150,9 @@ describe('POST: /comment', () => {
 
         const payload = {
             comment: 'Title',
-            published: 2020-0o1-0o1,
-            postId: 1,
-            authorId: 1,
+            published: '2020-0o1-0o1',
+            postId: '1',
+            authorId: '1',
             extraFieldInput: true
         };
         const result = await commentService.saveComment(payload)  as any;
@@ -131,67 +166,49 @@ describe('POST: /comment', () => {
 describe('PATCH: /comments', () => {
     //Patch success test
     test('Successful patch', async () => {
-        expect.assertions(1);
-        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
+        //expect.assertions(1);
+        mockCommentDao.patchComment.mockImplementation(input => input);
 
         const payload = {
-            id: 1,
+            id: '1',
             comment: 'Title',
-            published: 2020-0o1-0o1,
-            postId: 1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            postId: '1',
+            authorId: '1'
         };
-        const result = await commentService.saveComment(payload);
+        const result = await commentService.patchComment(payload);
 
-        expect(result).toBeTruthy();
-        //expect(payload).not.toBeInstanceOf(Comment); //Set to not author in input
-        //expect(result).toBeInstanceOf(Comment); //Transformed to person in result
+        //expect(result).toBeTruthy();
+        expect(payload).not.toBeInstanceOf(Comment); //Set to not author in input
+        expect(result).toBeInstanceOf(Comment); //Transformed to person in result
     });
 
     //Expected server error test
-    test('Returns 404 status from throw error', async () => {
-        expect.assertions(1);
-        //mockCommentrDao.saveComment.mockImplementation(input => input);
+    test('Throw new Error status 400', async () => {
+        //expect.assertions(1);
+        mockCommentDao.patchComment.mockReturnValue(undefined);
 
         const payload = {
             title: 'Title',
             body: 'Test',
-            published: 2020-0o1-0o1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            authorId: '1'
         };
 
+        let expectedError = undefined;
+        
         try{
-            const result = await commentService.patchComment(payload);
+            await commentService.patchComment(payload);
+            //const result = await commentService.patchComment(payload);
         }catch(err){
-            expect(err).toBeTruthy();
+            expectedError = err;
+            //expect(err).toBeTruthy();
         }
+        expect(expectedError).toBeDefined();
     });
 });
-
-
-
-/**READ ALL*/
-describe('GET: /comments', () => {
-    //Read success test
-    test('Throw new Error status 400', async () => {
-        expect.assertions(1);
-        //mockCommentDao.saveComment.mockImplementation(input => input);
-
-        const result = await commentService.getAllComments();
-
-        try{
-            expect(result).toContain([]);
-        }catch(err){
-            expect(err).toBeDefined();
-        }
-        //expect(payload).not.toBeInstanceOf(Comment); //Set to not comment in input
-        //expect(result).toBeInstanceOf(Comment); //Transformed to person in result
-    });
-});
-
 
 /**DELETE */
-/**READ ALL*/
 describe('DELETE: /comments/:id', () => {
     //Read success test
     test('Successful delete of id', async () => {

@@ -4,8 +4,8 @@ import { AuthorsPosts } from '../models/AuthorsPosts';
 /**Application Logic */
 
 
-//Store json Object in array
-export function getAllPosts(): Promise<Post[]> { //Promise<Post[]> returning promise from doa's
+//READ all by id
+export function getAllPosts(): Promise<Post[]> { //Promise<Post[]> returning array promise from doa's
     //Apply internal logic here(user privalleges/rules/authentication)
     return postDao.getAllPosts();
 };

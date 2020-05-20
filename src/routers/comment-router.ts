@@ -92,7 +92,7 @@ commentRouter.delete('/:id', (request, response, next) => {
                 response.json(comment);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500); //if recieving datbase issue's
             next();
         });

@@ -68,7 +68,7 @@ authorRouter.patch('', (request, response, next) => {
                 response.json(updatedAuthor);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500);
         }).finally(() => {
             next();
@@ -88,7 +88,7 @@ authorRouter.delete('/:id', (request, response, next) => {
                 response.json(author);
             }
         }).catch(err => {
-            console.log(err);
+            //console.log(err);
             response.sendStatus(500); //if recieving datbase issue's
             next();
         });

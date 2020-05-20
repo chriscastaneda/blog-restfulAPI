@@ -13,6 +13,61 @@ const mockPostDao = postDao as any;
 
 /**Creating fake database object */
 
+/**READ ALL*/
+describe('GET: /pots', () => {
+    //Read success test
+    test('Successful get all by id status 200', async () => { 
+        expect.assertions(1);
+        mockPostDao.getAllPosts.mockImplementation(async () => ([]));
+        const result = await postService.getAllPosts();
+
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+    });
+});
+
+/**READ by id */
+describe('GET: /posts/:id', () => {
+    //Read success test
+    test('Successful get by id status 200', async () => {
+        expect.assertions(1);
+        mockPostDao.getPostById.mockImplementation(async () => ({}));
+        const result = await postService.getPostById(11);
+        
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+        
+    });
+    
+});
+
+/**READ by author id */
+describe('GET: /posts/author/:id', () => {
+    //Read success test
+    test('Successful get by id status 200', async () => {
+        expect.assertions(1);
+        mockPostDao.getPostByAuthorId.mockImplementation(async () => ({}));
+        const result = await postService.getPostByAuthorId(11);
+        
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+        
+    });
+    
+});
 
 /**CREATE */
 describe('POST: /posts', () => {
@@ -96,10 +151,10 @@ describe('POST: /posts', () => {
         mockPostDao.savePost.mockImplementation(input => input); //return its self object
 
         const payload = {
-            id: 15,
+            id: '15',
             title: 'Title',
             body: 'Test',
-            published: 2020-0o1-0o1,
+            published: '2020-0o1-0o1',
             authorId: 1
         };
         const result = await postService.savePost(payload);
@@ -114,8 +169,8 @@ describe('POST: /posts', () => {
         const payload = {
             title: 'Title',
             body: 'Test',
-            published: 2020-0o1-0o1,
-            authorId: 1,
+            published: '2020-0o1-0o1',
+            authorId: '1',
             extraFieldInput: true
         };
         const result = await postService.savePost(payload)  as any;
@@ -129,64 +184,43 @@ describe('POST: /posts', () => {
 describe('PATCH: /posts', () => {
     //Patch success test
     test('Successful patch', async () => {
-        expect.assertions(1);
-        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
+        mockPostDao.patchPost.mockImplementation(input => input);
 
         const payload = {
-            id: 1,
+            id: '1',
             title: 'Title',
             body: 'Test',
-            published: 2020-0o1-0o1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            authorId: '1'
         };
-        const result = await postService.savePost(payload);
+        const result = await postService.patchPost(payload);
 
-        expect(result).toBeTruthy();
-        //expect(payload).not.toBeInstanceOf(Post); //Set to not author in input
-        //expect(result).toBeInstanceOf(Post); //Transformed to person in result
+        expect(payload).not.toBeInstanceOf(Post); //Set to not author in input
+        expect(result).toBeInstanceOf(Post); //Transformed to person in result
     });
 
     //Expected server error test
     test('Returns 404 status from throw error', async () => {
-        expect.assertions(1);
-        //mockPostrDao.savePost.mockImplementation(input => input);
+        mockPostDao.patchPost.mockReturnValue(undefined);
 
         const payload = {
             title: 'Title',
             body: 'Test',
-            published: 2020-0o1-0o1,
-            authorId: 1
+            published: '2020-0o1-0o1',
+            authorId: '1'
         };
 
-        try{
-            const result = await postService.patchPost(payload);
-        }catch(err){
-            expect(err).toBeTruthy();
-        }
-    });
-});
-
-
-
-/**READ ALL*/
-describe('GET: /posts', () => {
-    //Read success test
-    test('Throw new Error status 400', async () => {
-        expect.assertions(1);
-        //mockPostDao.savePost.mockImplementation(input => input);
-
-        const result = await postService.getAllPosts();
+        let expectedError = undefined;
 
         try{
-            expect(result).toContain([]);
+            await postService.patchPost(payload);
+            fail('postService.patchPost failed request');
         }catch(err){
-            expect(err).toBeDefined();
+            expectedError = err;
         }
-        //expect(payload).not.toBeInstanceOf(Post); //Set to not post in input
-        //expect(result).toBeInstanceOf(Post); //Transformed to person in result
+        expect(expectedError).toBeDefined();
     });
 });
-
 
 /**DELETE */
 /**READ ALL*/

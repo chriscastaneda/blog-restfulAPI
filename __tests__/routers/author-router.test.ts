@@ -131,8 +131,37 @@ describe('PATCH: /authors', () => {
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
     });
-});
 
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockAuthorService.patchAuthor.mockImplementation( async () => {0}); //insert value 0 as object
+        const payload = {
+            id: '1',
+            lastName: 'object',
+            email: "new.object@email.com"
+        };
+
+        await request(app)
+            .patch('/authors')
+            .send(payload)
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockAuthorService.patchAuthor.mockImplementation(async () => {throw new Error()}); 
+        const payload = {
+            id: 'F',
+            lastName: 'object',
+            email: "new.object@email.com"
+        };
+
+        await request(app)
+            .patch('/authors')
+            .send(payload)
+            .expect(500);
+    });
+});
 
 /**DELETE */
 describe('DELETE: /:id', () => {
@@ -144,5 +173,23 @@ describe('DELETE: /:id', () => {
             .delete('/authors/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockAuthorService.deleteAuthorById.mockImplementation( async () => {0}); //insert value 0 as object
+        
+        await request(app)
+            .delete('/authors/1')
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockAuthorService.deleteAuthorById.mockImplementation( async () => {throw new Error()});
+        
+        await request(app)
+            .delete('/authors/1') 
+            .expect(500); 
     });
 });

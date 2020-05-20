@@ -13,6 +13,41 @@ const mockAuthorDao = authorDao as any;
 
 /**Creating fake database object */
 
+/**READ ALL*/
+describe('GET: /authors', () => {
+    //Read success test
+    test('Successful get all by id status 200', async () => { 
+        expect.assertions(1);
+        mockAuthorDao.getAllAuthors.mockImplementation(async () => ([]));
+        const result = await authorService.getAllAuthors();
+
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+    });
+});
+
+/**READ by id */
+describe('GET: /authors/:id', () => {
+    //Read success test
+    test('Successful get by id status 200', async () => {
+        expect.assertions(1);
+        mockAuthorDao.getAuthorById.mockImplementation(async () => ({}));
+        const result = await authorService.getAuthorById(11);
+        
+        try{
+            expect(result).toBeTruthy();
+        }catch(err){
+            expect(err).toBeDefined();
+        }
+        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+        
+    });
+    
+});
 
 /**CREATE */
 describe('POST: /authors', () => {
@@ -95,7 +130,7 @@ describe('POST: /authors', () => {
         mockAuthorDao.saveAuthor.mockImplementation(input => input); //return its self object
 
         const payload = {
-            id: 15,
+            id: '15',
             firstName: 'Test',
             lastName: 'Success',
             email: 'testpassed@email.com'
@@ -121,70 +156,46 @@ describe('POST: /authors', () => {
     });
 });
 
-
 /**UPDATE */
 describe('PATCH: /authors', () => {
-    //Patch success test
-    test('Successful patch', async () => {
-        expect.assertions(1);
-        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
+    //Object Success Test (BlackBox)
+    test('Test object transformed to Person object', async () => {
+        mockAuthorDao.patchAuthor.mockImplementation(input => input); //return its self object
 
         const payload = {
-            id: 1,
-            firstName: 'Test',
+            id: '1',
             lastName: 'Success',
             email: 'testpassed@email.com'
         };
-        const result = await authorService.saveAuthor(payload);
+        const result = await authorService.patchAuthor(payload);
 
-        expect(result).toBeTruthy();
-        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
-        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
+        expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
+        expect(result).toBeInstanceOf(Author); //Transformed to person in result
     });
 
-    //Expected server error test
-    test('Returns 404 status from throw error', async () => {
-        expect.assertions(1);
-        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
-
+     //Object Properties Failure Test(WhiteBox)
+     test('Throw new Error status 400', async () => {
+        //expect.assertions(1);
+        mockAuthorDao.patchAuthor.mockReturnValue(undefined); //mockAuthorDao function returning undefined response
+        
         const payload = {
-            firstName: 'Test',
-            lastName: 'Success',
-            email: 'testpassed@email.com'
-        };
+            lastName: 'Smith',
+            email: 'testNew.Object@jest.com'
+        }
+
+        let expectedError = undefined;
 
         try{
-            const result = await authorService.patchAuthor(payload);
+            await authorService.patchAuthor(payload);
+            fail('authorService.patchAuthor failed request'); //Reject patchAuthor due to missing name
         }catch(err){
-            expect(err).toBeTruthy();
+            expectedError = err; //Assign error object to expectedError
         }
+        expect(expectedError).toBeDefined(); //Validate error was thrown
     });
 });
-
-
-
-/**READ ALL*/
-describe('GET: /authors', () => {
-    //Read success test
-    test('Throw new Error status 400', async () => {
-        expect.assertions(1);
-        //mockAuthorDao.saveAuthor.mockImplementation(input => input);
-
-        const result = await authorService.getAllAuthors();
-
-        try{
-            expect(result).toContain([]);
-        }catch(err){
-            expect(err).toBeDefined();
-        }
-        //expect(payload).not.toBeInstanceOf(Author); //Set to not author in input
-        //expect(result).toBeInstanceOf(Author); //Transformed to person in result
-    });
-});
-
 
 /**DELETE */
-/**READ ALL*/
 describe('DELETE: /authors/:id', () => {
     //Read success test
     test('Successful delete of id', async () => {

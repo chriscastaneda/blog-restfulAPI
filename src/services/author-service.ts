@@ -3,8 +3,8 @@ import * as authorDao from '../daos/author-dao';
 /**Application Logic */
 
 
-//Store new JS Author Object in array??
-export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returning promise from doa's
+/**Read All */
+export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returning promise from doa in array's
     //Apply internal logic here(user privalleges/rules/authentication)
     return authorDao.getAllAuthors();
 };
@@ -12,7 +12,7 @@ export function getAllAuthors(): Promise<Author[]> { //Promise<Author[]> returni
 //READ/reference author object by database id
 export function getAuthorById(id: number): Promise<Author> {
     //Apply internal logic here(user privalleges/rules/authentication)
-    return authorDao.getAllAuthorById(id);
+    return authorDao.getAuthorById(id);
 };
 
 //Create database object

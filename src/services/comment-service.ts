@@ -4,8 +4,8 @@ import { ArticleComments } from '../models/ArticleComments';
 /**Application Logic */
 
 
-//Store new JS Comment Object in array
-export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> returning promise from doa's
+//Read all comments by id
+export function getAllComments(): Promise<Comment[]> { //Promise<Comment[]> returning array promise from doa's
     //Apply internal logic here(user privalleges/rules/authentication)
     return commentDao.getAllComments();
 };

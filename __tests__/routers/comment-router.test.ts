@@ -121,8 +121,8 @@ describe('PATCH: /comments', () => {
         mockCommentService.patchComment.mockImplementation(async () => ({}));
         const payload = {
             id: '6',
-            lastName: 'object',
-            email: "new.object@email.com"
+            comment: 'object',
+            postId: "1"
         };
 
         await request(app)
@@ -130,6 +130,36 @@ describe('PATCH: /comments', () => {
             .send(payload)
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+    
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockCommentService.patchComment.mockImplementation( async () => {0}); //insert value 0 as object
+        const payload = {
+            id: '1',
+            comment: 'object',
+            postId: "1"
+        };
+
+        await request(app)
+            .patch('/comments')
+            .send(payload)
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockCommentService.patchComment.mockImplementation(async () => {throw new Error()}); 
+        const payload = {
+            id: 'F',
+            comment: 'object',
+            postId: "1"
+        };
+
+        await request(app)
+            .patch('/comments')
+            .send(payload)
+            .expect(500);
     });
 });
 
@@ -144,5 +174,23 @@ describe('DELETE: /:id', () => {
             .delete('/comments/1')
             .expect('content-type', 'application/json; charset=utf-8')
             .expect(200);
+    });
+    
+    //Expected server error test
+    test('Returns 404 status from throw error', async () => {
+        mockCommentService.deleteCommentById.mockImplementation( async () => {0}); //insert value 0 as object
+        
+        await request(app)
+            .delete('/comments/1')
+            .expect(404);
+    });
+
+    //Expected server error test
+    test('Returns 500 status from throw error', async () => {
+        mockCommentService.deleteCommentById.mockImplementation( async () => {throw new Error()});
+        
+        await request(app)
+            .delete('/comments/1') 
+            .expect(500); 
     });
 });
