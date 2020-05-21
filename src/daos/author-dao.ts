@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { dbConnection} from '../daos/db';
 import { Author, AuthorRow } from '../models/Author';
 /**Database query logic */

@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+ 
 import { dbConnection} from '../daos/db';
 import { Post, PostRow } from '../models/Post';
 import { AuthorsPosts, AuthorsPostsRow } from '../models/AuthorsPosts';

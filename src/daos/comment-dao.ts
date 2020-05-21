@@ -1,3 +1,5 @@
+/* istanbul ignore file */
+
 import { dbConnection } from '../daos/db';
 import { Comment, CommentRow } from '../models/Comment';
 import { ArticleComments, ArticleCommentsRow } from '../models/ArticleComments';

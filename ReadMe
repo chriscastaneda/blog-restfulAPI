@@ -26,6 +26,8 @@ Mocking(practice), 2:36:35
 API Test -supertest
 L:10,Morn, 2:32:50
  "TDD": code first, ajay test.
+Exclude files from coverage test: 
+Place this comment in every file that will be excluded on the top of file, line 1 /* istanbul ignore file */
 
  birthdate:
  L10, Lunc, v#2, 0:18:57 & 1:34:01 & 1:36:30
