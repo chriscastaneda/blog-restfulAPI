@@ -39,7 +39,7 @@ Place this comment in every file that will be excluded on the top of file, line 
  Read: Get, /authors
  ReadById: Get, /authors/#
  Update: Patch, /authors, body: {"id": 9, "firstName": "TestPatch"}
- Delete: Dlelete, /authors/#  
+ Delete: Delete, /authors/#  
 
  getPetsByPersonId:
  Get: people/#/Denny
@@ -61,7 +61,7 @@ git push origin master
 
 
 
-Presentation ChearSheet:
+Presentation CheatSheet:
 -----------------------------
 authors:
 1.View all users :/authors
