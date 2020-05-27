@@ -27,16 +27,15 @@ Subject:
 - npm install pg typescript express bodyparser
 
 ## Postman
-http://localhost:3000/
+running on -http://localhost:3000/
 
-- authors:
+Authors:
 1. View all users: /authors
 2. Create new author: /authors
 3. Update author: /authors
 4. Delete my account: /authors/id
 5. View all users: /authors
 
----------------------
 Post:
 1. View all post's: /posts
 2. create article: /posts
@@ -47,12 +46,11 @@ Post:
 6. View All Peter's articles: /posts/authors/id
 7. View PETER post by title: /posts/id  
 
----------------------
 Comments:
-1.View all comments by post: /comments/posts/id 
-2.Create a comment :/comments 
-3.update my comment :/comments
-4.delete my comment :/comments/id
+1. View all comments by post: /comments/posts/id 
+2. Create a comment :/comments 
+3. update my comment :/comments
+4. delete my comment :/comments/id
 
 5.View all comments: /comments
 
