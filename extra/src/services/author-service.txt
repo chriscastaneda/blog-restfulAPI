@@ -1,0 +1,6 @@
+
+//?Fix logic
+/**Reference post object by database id
+export function getPostsByAuthorId(id: number): Promise<Post[]> {
+    return authorDao.getPostsByAuthorId(id);
+};*/

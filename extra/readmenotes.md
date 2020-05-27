@@ -27,7 +27,7 @@ API Test -supertest
 L:10,Morn, 2:32:50
  "TDD": code first, ajay test.
 Exclude files from coverage test: 
-Place this comment in every file that will be excluded on the top of file, line 1 /* istanbul ignore file */
+Place this comment in every file that will be excluded on the top of file, line 1: /* istanbul ignore file */
 
  birthdate:
  L10, Lunc, v#2, 0:18:57 & 1:34:01 & 1:36:30
@@ -58,3 +58,40 @@ git commit -m "Commit message"
 
 Push:	Send changes to the master branch of your remote repository:	
 git push origin master
+
+
+
+Presentation ChearSheet:
+-----------------------------
+authors:
+1.View all users :/authors
+2.Create new author :/authors
+3.Update author :/authors
+
+
+---------------------
+Post:
+1.View all post's: /posts
+2.create article :/posts
+3.update article :/posts 
+4.Delete article :/posts/id
+
+5.View all post's: /posts
+6.View All Peter's articles: /posts/authors/id
+7.View PETER post by title: /posts/id  
+
+
+---------------------------
+Comments:
+8.View all comments: /comments/posts/id 
+9.Create a comment :/comments 
+10.update my comment :/comments
+11.delete my comment :/comments/id
+
+12.Delete my account :/authors/id
+13.View all users :/authors
+
+-----------
+notes:
+re-arrange aothor.ts interface
+fix timestamp

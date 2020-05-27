@@ -1,0 +1,12 @@
+/**Retrieve post by id
+export function getPostById(id: number): Promise<Post> {
+    const sql = `SELECT \
+                posts.*, \
+                authors.first_name, authors.last_name \
+                FROM posts \
+                LEFT JOIN authors ON posts.authors_id = authors.id \
+                WHERE posts.id = $1`; //Parameterize queries
+
+    return dbConnection.query<PostRow>(sql, [id]) //Filter response for only [id]
+        .then(result => result.rows.map(row => Post.from(row))[0]); //Limit result to 1 object by index[0]
+};*/

@@ -1,0 +1,22 @@
+
+//?Fix logic
+/**Read posts by author id 
+authorRouter.get('/:id/posts', async (request, response, next) => { //request promise with async
+    const id: number = parseInt(request.params.id);
+    let posts: Post[];
+
+    try {
+        posts = await authorService.getPostsByAuthorId(id); //unwrap promise
+    }catch(err){
+        response.sendStatus(500); //send status promise not met
+        //console.log(err);
+        return;
+    }
+    
+    if(!posts){
+        response.sendStatus(404); //return undefined if author does not exist
+    }else{
+        response.json(posts);
+    }
+    next();
+});*/

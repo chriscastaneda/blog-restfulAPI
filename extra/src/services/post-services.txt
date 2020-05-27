@@ -1,0 +1,6 @@
+
+/*Reference post object by database id 
+export function getPostById(id: number): Promise<Post> {
+    //Apply internal logic here(user privalleges/rules/authentication)
+    return postDao.getPostById(id);
+};*/
