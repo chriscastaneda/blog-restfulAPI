@@ -27,7 +27,7 @@ Subject:
 - npm install pg typescript express bodyparser
 
 ## Postman
-running on -http://localhost:3000/
+running on localhost:3000
 
 Authors:
 1. View all users: /authors
@@ -52,7 +52,7 @@ Comments:
 3. update my comment :/comments
 4. delete my comment :/comments/id
 
-5.View all comments: /comments
+5. View all comments: /comments
 
 ## View Test Coverage
 - coverage/icon-report/index.html
