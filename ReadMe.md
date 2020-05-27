@@ -41,7 +41,6 @@ Posts:
 2. Create article: /posts
 3. Update article: /posts 
 4. Delete article: /posts/id
-
 5. View all post's: /posts
 6. View All Peter's articles: /posts/authors/id
 7. View PETER post by title: /posts/id  
@@ -51,7 +50,6 @@ Comments:
 2. Create a comment :/comments 
 3. Update my comment :/comments
 4. Delete my comment :/comments/id
-
 5. View all comments: /comments
 
 ## View Test Coverage
