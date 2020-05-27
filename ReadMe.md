@@ -27,7 +27,7 @@ Subject:
 - npm install pg typescript express bodyparser
 
 ## Postman
-running on localhost:3000
+- running on localhost:3000
 
 Authors:
 1. View all users: /authors
