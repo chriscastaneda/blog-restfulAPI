@@ -36,10 +36,10 @@ Authors:
 4. Delete my account: /authors/id
 5. View all users: /authors
 
-Post:
+Posts:
 1. View all post's: /posts
-2. create article: /posts
-3. update article: /posts 
+2. Create article: /posts
+3. Update article: /posts 
 4. Delete article: /posts/id
 
 5. View all post's: /posts
@@ -49,8 +49,8 @@ Post:
 Comments:
 1. View all comments by post: /comments/posts/id 
 2. Create a comment :/comments 
-3. update my comment :/comments
-4. delete my comment :/comments/id
+3. Update my comment :/comments
+4. Delete my comment :/comments/id
 
 5. View all comments: /comments
 
