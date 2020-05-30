@@ -24,7 +24,7 @@ Subject:
 
 ## Init Instructions
 - npm install
-- npm install pg typescript express bodyparser
+- npm install express body-parser
 
 ## Postman
 - running on localhost:3000
