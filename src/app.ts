@@ -10,6 +10,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.set('port', port);//set port globally
 
+/**CORS Middleware */
+app.use((request, response, next)=> {
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+    next();
+});
+
 /**Middleware */
 app.use(bodyParser.json());
 
@@ -18,7 +24,7 @@ app.use('/authors', authorRouter);
 app.use('/posts', postRouter);
 app.use('/comments', commentRouter);
 
-/**Pool Connection error handle */
+/**PG Pool Connection error handle */
 process.on('unhandledRejection', () => {
     dbConnection.end().then(() => {
         console.log('Database pool closed');

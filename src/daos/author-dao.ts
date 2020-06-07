@@ -36,7 +36,7 @@ export async function authorExists(authorId: number): Promise<boolean> {
     return result.rows[0].exists; //if boolean: 0, user exists
 };
 
-//Insert
+//Create
 export function saveAuthor(author: Author): Promise<Author> {
     const sql = `INSERT INTO authors (first_name, last_name, email) \
     VALUES ($1, $2, $3) RETURNING *`; //Returning Data after insertion 

@@ -24,7 +24,8 @@ export function saveAuthor(author: any): Promise<Author> {
         author.email
     )
 
-    if(author.firstName && author.lastName && author.email){ //Data is valid - submit to DAO
+    // Validate new associate properties - submit to DAO
+    if(author.firstName && author.lastName && author.email){
         return authorDao.saveAuthor(newAuthor);
     }else{
         //console.log('Author invalid');
