@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1589984684203" clover="3.2.0">
-  <project timestamp="1589984684203" name="All files">
+<coverage generated="1596121736238" clover="3.2.0">
+  <project timestamp="1596121736239" name="All files">
     <metrics statements="220" coveredstatements="214" conditionals="43" coveredconditionals="43" methods="73" coveredmethods="70" elements="336" coveredelements="327" complexity="0" loc="220" ncloc="220" packages="4" files="10" classes="10"/>
     <package name="daos">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -208,16 +208,16 @@
         <line num="15" count="1" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
         <line num="20" count="6" type="stmt"/>
-        <line num="27" count="6" type="cond" truecount="5" falsecount="0"/>
-        <line num="28" count="3" type="stmt"/>
-        <line num="31" count="3" type="stmt"/>
-        <line num="36" count="2" type="stmt"/>
+        <line num="28" count="6" type="cond" truecount="5" falsecount="0"/>
+        <line num="29" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
         <line num="37" count="2" type="stmt"/>
-        <line num="44" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="52" count="2" type="stmt"/>
-        <line num="53" count="1" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="45" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
       </file>
       <file name="comment-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\services\comment-service.ts">
         <metrics statements="18" coveredstatements="18" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
