@@ -29,9 +29,9 @@ Tech Stack:
 - npm install
 
 ### Postman Setup
-- npm start
-- test in postman on http://localhost:3000
-- Endpoints
+  - npm start
+  - test in postman on http://localhost:3000
+  - Endpoints
 ```
 Authors:
 1. View all users: /authors
@@ -57,5 +57,5 @@ Comments:
 5. View all comments: /comments
 ```
 ### Test Coverage
-- npm test
-- view in browser: coverage/icon-report/index.html
+  - npm test
+  - view in browser: coverage/icon-report/index.html
