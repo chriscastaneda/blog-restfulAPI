@@ -1,3 +1,6 @@
+Demo:
+[![Demo](https://github.com/chriscastaneda/rev-p2-internal-ticketing-system/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/10OXxnCC41nw44Z3nhHYRkfyc8cxjXH23/view)
+
 # Project 
 
 Building a RESTful API using TypeScript and Express.
