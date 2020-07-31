@@ -23,7 +23,7 @@ demo:
 
 ## Init Instructions
 - install node 6.14.4 or higher
-- server/ npm install
+- _server/_ npm install
 
 ### Postman
   - npm start
