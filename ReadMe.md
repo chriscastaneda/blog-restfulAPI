@@ -17,12 +17,12 @@ Tech Stack
 - [ ] Git SCM (on GitHub)
 
 ## Features
-- [ ] RESTful API (Meets the Level 2 of the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html))
-- [ ] Documentation (all methods have basic documentation)
-- [ ] Unit testing (> 80% coverage)
-- [ ] SQL Data Persistance (3 tables; all 3NF)
-- [ ] Filter by authors (added)
-- [ ] Commenting system (added)
+- RESTful API (Meets the Level 2 of the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html))
+- Documentation (all methods have basic documentation)
+- Unit testing (> 80% coverage)
+- SQL Data Persistance (3 tables; all 3NF)
+- Filter by authors (added)
+- Commenting system (added)
 
 ## Init Instructions
 - npm install
