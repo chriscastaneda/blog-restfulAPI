@@ -1,13 +1,20 @@
-Demo:
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
-# Project 
+# Blog RESTful API
 
 Building a RESTful API using TypeScript and Express.
 
 Subject: 
 - Blog posting system API: 
 - Authors, Posts, Comments
+
+Tech Stack
+- [ ] TypeScript
+- [ ] PostGreSQL
+- [ ] node-postgre
+- [ ] Express
+- [ ] Jest
+- [ ] Git SCM (on GitHub)
 
 ## Features
 - [ ] RESTful API (Meets the Level 2 of the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html))
@@ -16,14 +23,6 @@ Subject:
 - [ ] SQL Data Persistance (3 tables; all 3NF)
 - [ ] Filter by authors (added)
 - [ ] Commenting system (added)
-
-## Tech Stack
-- [ ] TypeScript
-- [ ] PostGreSQL
-- [ ] node-postgre
-- [ ] Express
-- [ ] Jest
-- [ ] Git SCM (on GitHub)
 
 ## Init Instructions
 - npm install
