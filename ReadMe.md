@@ -1,15 +1,15 @@
-# Blog API
+# Blog RESTful API
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
 # The Project
 
 Building a RESTful API using TypeScript and Express.
 
-## Subject: 
-- Blog posting system API: 
+Subject: 
+- Blog posting system API
 - Authors, Posts, Comments
 
-## Tech Stack
+Tech Stack:
 - [x] TypeScript
 - [x] PostGreSQL
 - [x] node-postgre
