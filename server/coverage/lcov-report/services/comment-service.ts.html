@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/post-service.ts</title>
+    <title>Code coverage report for services/comment-service.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> post-service.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> comment-service.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>7/7</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -112,12 +112,7 @@
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
 <a name='L55'></a><a href='#L55'>55</a>
-<a name='L56'></a><a href='#L56'>56</a>
-<a name='L57'></a><a href='#L57'>57</a>
-<a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a>
-<a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L56'></a><a href='#L56'>56</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,11 +121,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -177,66 +167,61 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Post } from '../models/Post';
-import * as postDao from '../daos/post-dao';
-import { AuthorsPosts } from '../models/AuthorsPosts';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Comment } from '../models/Comment';
+import * as commentDao from '../daos/comment-dao';
+import { ArticleComments } from '../models/ArticleComments';
 /**Application Logic */
 &nbsp;
 &nbsp;
-//READ all by id
-export function getAllPosts(): Promise&lt;Post[]&gt; { //Promise&lt;Post[]&gt; returning array promise from doa's
+//Read all comments by id
+export function getAllComments(): Promise&lt;Comment[]&gt; { //Promise&lt;Comment[]&gt; returning array promise from doa's
     //Apply internal logic here(user privalleges/rules/authentication)
-    return postDao.getAllPosts();
+    return commentDao.getAllComments();
 };
 &nbsp;
-//Reference post object by database id 
-export function getPostById(id: number): Promise&lt;Post[]&gt; {
-    return postDao.getPostById(id);
-};
-&nbsp;
-/*Reference post object by database author id*/
-export function getPostByAuthorId(authorId: number): Promise&lt;AuthorsPosts[]&gt; {
-    return postDao.getPostByAuthorId(authorId);
+//Reference comment object by database post id
+export function getAllCommentsByPostId(postId: number): Promise&lt;ArticleComments[]&gt; {
+    return commentDao.getAllCommentsByPostId(postId);
 };
 &nbsp;
 //Create database object
-export function savePost(post: any): Promise&lt;Post&gt; {
-    const newPost = new Post ( //create object from service request
+export function saveComment(comment: any): Promise&lt;Comment&gt; {
+    const newComment = new Comment ( //create object from service request
         undefined, //set undefined id to prevent sql injection
-        post.title, 
-        post.body, 
-        post.published,
-        post.authorId
+        comment.comment, 
+        comment.published,
+        comment.postId,
+        comment.authorId
     )
 &nbsp;
-    if(post.title &amp;&amp; post.body &amp;&amp; post.published &amp;&amp; post.authorId){ //Data is valid - submit to DAO
-        return postDao.savePost(newPost);
+    if(comment.comment &amp;&amp; comment.published &amp;&amp; comment.postId &amp;&amp; comment.authorId){ //Data is valid - submit to DAO
+        return commentDao.saveComment(newComment);
     }else{
-        //console.log('Posts invalid');
+        //console.log('Comment invalid');
         return new Promise((resolve, reject) =&gt; reject(422));
     }
 };
 &nbsp;
 //Update by object properties
-export function patchPost(properties: any): Promise&lt;Post&gt; {
-    const post = new Post(
+export function patchComment(properties: any): Promise&lt;Comment&gt; {
+    const comment = new Comment(
         properties.id,
-        properties.title,
-        properties.body,
-        properties.published,
+        properties.comment, 
+        properties.published, 
+        properties.postId,
         properties.authorId
     );
 &nbsp;
-    if(!post.id){
+    if(!comment.id){
         throw new Error('400');
     }else{
-        return postDao.patchPost(post);
+        return commentDao.patchComment(comment);
     }
 };
 &nbsp;
 //Delete by Id
-export function deletePostById(id: number): Promise&lt;Post&gt; {
-    return postDao.deletePostById(id);
+export function deleteCommentById(id: number): Promise&lt;Comment&gt; {
+    return commentDao.deleteCommentById(id);
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -244,7 +229,7 @@ export function deletePostById(id: number): Promise&lt;Post&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jul 30 2020 08:08:56 GMT-0700 (Pacific Daylight Time)
+                at Fri Jul 31 2020 09:34:33 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>

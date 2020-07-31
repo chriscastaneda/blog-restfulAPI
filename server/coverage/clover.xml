@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1596121736238" clover="3.2.0">
-  <project timestamp="1596121736239" name="All files">
+<coverage generated="1596213274086" clover="3.2.0">
+  <project timestamp="1596213274086" name="All files">
     <metrics statements="220" coveredstatements="214" conditionals="43" coveredconditionals="43" methods="73" coveredmethods="70" elements="336" coveredelements="327" complexity="0" loc="220" ncloc="220" packages="4" files="10" classes="10"/>
     <package name="daos">
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="db.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\daos\db.ts">
+      <file name="db.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\daos\db.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="6" type="stmt"/>
         <line num="4" count="6" type="stmt"/>
@@ -12,7 +12,7 @@
     </package>
     <package name="models">
       <metrics statements="23" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="3"/>
-      <file name="Author.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\models\Author.ts">
+      <file name="Author.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\models\Author.ts">
         <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="2" count="3" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
@@ -22,7 +22,7 @@
         <line num="20" count="8" type="stmt"/>
         <line num="21" count="8" type="stmt"/>
       </file>
-      <file name="Comment.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\models\Comment.ts">
+      <file name="Comment.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\models\Comment.ts">
         <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="2" count="3" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -33,7 +33,7 @@
         <line num="26" count="8" type="stmt"/>
         <line num="27" count="8" type="stmt"/>
       </file>
-      <file name="Post.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\models\Post.ts">
+      <file name="Post.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\models\Post.ts">
         <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="2" count="3" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
@@ -47,7 +47,7 @@
     </package>
     <package name="routers">
       <metrics statements="139" coveredstatements="139" conditionals="20" coveredconditionals="20" methods="48" coveredmethods="48"/>
-      <file name="author-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\routers\author-router.ts">
+      <file name="author-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\routers\author-router.ts">
         <metrics statements="43" coveredstatements="43" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="16"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -93,7 +93,7 @@
         <line num="92" count="1" type="stmt"/>
         <line num="93" count="1" type="stmt"/>
       </file>
-      <file name="comment-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\routers\comment-router.ts">
+      <file name="comment-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\routers\comment-router.ts">
         <metrics statements="43" coveredstatements="43" conditionals="6" coveredconditionals="6" methods="15" coveredmethods="15"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -139,7 +139,7 @@
         <line num="96" count="1" type="stmt"/>
         <line num="97" count="1" type="stmt"/>
       </file>
-      <file name="post-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\routers\post-router.ts">
+      <file name="post-router.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\routers\post-router.ts">
         <metrics statements="53" coveredstatements="53" conditionals="8" coveredconditionals="8" methods="17" coveredmethods="17"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -198,7 +198,7 @@
     </package>
     <package name="services">
       <metrics statements="56" coveredstatements="56" conditionals="23" coveredconditionals="23" methods="19" coveredmethods="19"/>
-      <file name="author-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\services\author-service.ts">
+      <file name="author-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\services\author-service.ts">
         <metrics statements="18" coveredstatements="18" conditionals="7" coveredconditionals="7" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -219,7 +219,7 @@
         <line num="53" count="2" type="stmt"/>
         <line num="54" count="1" type="stmt"/>
       </file>
-      <file name="comment-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\services\comment-service.ts">
+      <file name="comment-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\services\comment-service.ts">
         <metrics statements="18" coveredstatements="18" conditionals="8" coveredconditionals="8" methods="6" coveredmethods="6"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
@@ -240,7 +240,7 @@
         <line num="54" count="2" type="stmt"/>
         <line num="55" count="1" type="stmt"/>
       </file>
-      <file name="post-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\src\services\post-service.ts">
+      <file name="post-service.ts" path="F:\windows\Users\Chris Castaneda\Documents\GitHub\revature\project0\server\src\services\post-service.ts">
         <metrics statements="20" coveredstatements="20" conditionals="8" coveredconditionals="8" methods="7" coveredmethods="7"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>

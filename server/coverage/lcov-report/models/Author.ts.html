@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for models/Comment.ts</title>
+    <title>Code coverage report for models/Author.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> Comment.ts</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">models</a> Author.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">71.43% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">71.43% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/8</span>
+                <span class='fraction'>5/7</span>
             </div>
         
             
@@ -87,14 +87,7 @@
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
-<a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -103,25 +96,18 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,42 +118,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**Convert Postres Schema into Javascript Object */
-export class Comment {
+export class Author {
     id: number;
-    comment: string;
-    published: Date;
-    postId: number;
-    authorId: number;
+    firstName: string;
+    lastName: string;
+    email: string;
 &nbsp;
     //Create new JS instance object from database schema
-<span class="fstat-no" title="function not covered" >    static </span>from(object: CommentRow): Comment {
-        const comment = <span class="cstat-no" title="statement not covered" >new Comment(</span>
-            object.id, 
-            object.comment_body, 
-            object.publish_date, 
-            object.post_id,
-            object.authors_id
+<span class="fstat-no" title="function not covered" >    static </span>from(object: AuthorRow): Author {
+        const author = <span class="cstat-no" title="statement not covered" >new Author(</span>
+            object.id, object.first_name, object.last_name, object.email
         );
-<span class="cstat-no" title="statement not covered" >        return comment;</span>
+<span class="cstat-no" title="statement not covered" >        return author;</span>
     };
 &nbsp;
     //Project constructor
-    constructor(id: number, comment: string, published: Date, postId: number, authorId: number) {
+    constructor(id: number, firstName: string, lastName: string, email: string) {
         this.id = id;
-        this.comment = comment;
-        this.published = published;
-        this.postId = postId;
-        this.authorId = authorId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     };
 };
 &nbsp;
 /**Template object of Database Table */
-export interface CommentRow {
+export interface AuthorRow {
     id: number;
-    comment_body: string;
-    publish_date: Date;
-    post_id: number;
-    authors_id: number;
+    first_name: string;
+    last_name: string;
+    email: string;
 };</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -175,7 +154,7 @@ export interface CommentRow {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu Jul 30 2020 08:08:56 GMT-0700 (Pacific Daylight Time)
+                at Fri Jul 31 2020 09:34:33 GMT-0700 (Pacific Daylight Time)
             </div>
         </div>
         <script src="../prettify.js"></script>
