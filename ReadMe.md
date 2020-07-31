@@ -4,7 +4,7 @@
 
 A interactive RESTful API representing a blog posting platform containing basic Authors options, article(Posts) database, and commenting system.
 
-Tech Stack:
+**Tech Stack:**
 - [x] TypeScript
 - [x] PostGreSQL
 - [x] node-postgre
