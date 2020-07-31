@@ -1,6 +1,6 @@
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
-# Blog Post RESTful API
+# Simple Blog API
 
 Building a RESTful API using TypeScript and Express.
 
@@ -28,8 +28,9 @@ Tech Stack:
 - install node 6.14.4 or higher
 - npm install
 
-## Postman
-- test on http://localhost:3000
+### Postman Setup
+- npm start
+- test in postman on http://localhost:3000
 - Endpoints
 ```
 Authors:
@@ -50,10 +51,11 @@ Posts:
 
 Comments:
 1. View all comments by post: /comments/posts/id 
-2. Create a comment :/comments 
-3. Update my comment :/comments
-4. Delete my comment :/comments/id
+2. Create a comment: /comments 
+3. Update my comment: /comments
+4. Delete my comment: /comments/id
 5. View all comments: /comments
 ```
-## View Test Coverage
-- coverage/icon-report/index.html
+### Test Coverage
+- npm test
+- view in browser: coverage/icon-report/index.html
