@@ -1,4 +1,4 @@
-# Simple Blog API
+# Simple blog API
 
 A interactive RESTful API representing a blog posting platform containing basic _Authors_ options, article(_Posts_) database, and _Commenting_ system.
 
