@@ -29,8 +29,9 @@ Tech Stack:
 - npm install
 
 ## Postman
-- running on localhost:3000
-
+- test on http://localhost:3000
+- Endpoints
+```
 Authors:
 1. View all users: /authors
 2. Create new author: /authors
@@ -53,6 +54,6 @@ Comments:
 3. Update my comment :/comments
 4. Delete my comment :/comments/id
 5. View all comments: /comments
-
+```
 ## View Test Coverage
 - coverage/icon-report/index.html
