@@ -2,7 +2,7 @@
 
 # Simple Blog API
 
-A interactive RESTful API representing a blog posting platform containing basic Authors options, article(Posts) database, and commenting system.
+A interactive RESTful API representing a blog posting platform containing basic _authors_ options, article(_posts_) database, and _commenting_ system.
 
 **Tech Stack:**
 - [x] TypeScript
