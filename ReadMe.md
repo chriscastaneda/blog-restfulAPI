@@ -4,12 +4,12 @@
 
 Building a RESTful API using TypeScript and Express.
 
-Subject: 
+###### Subject: 
 - Blog posting system API: 
 - Authors, Posts, Comments
 
-Tech Stack
-    - TypeScript
+###### Tech Stack
+- [ ] TypeScript
 - [ ] PostGreSQL
 - [ ] node-postgre
 - [ ] Express
