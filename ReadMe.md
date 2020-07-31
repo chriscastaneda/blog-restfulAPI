@@ -2,10 +2,10 @@
 
 # Simple Blog API
 
-Building a RESTful API using TypeScript and Express.
+A interactive RESTful API, representing a blog posting platform containing basic user options, article database, and commenting system.
 
 Subject: 
-- Blog posting system API
+- Blog post api
 - Authors, Posts, Comments
 
 Tech Stack:
