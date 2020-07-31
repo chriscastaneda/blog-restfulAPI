@@ -1,37 +1,35 @@
-Demo:
-[![Demo](https://github.com/chriscastaneda/rev-p2-internal-ticketing-system/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/10OXxnCC41nw44Z3nhHYRkfyc8cxjXH23/view)
+# Simple Blog API
 
-# Project 
+A interactive RESTful API representing a blog posting platform containing basic _Authors_ options, article(_Posts_) database, and _Commenting_ system.
 
-Building a RESTful API using TypeScript and Express.
+**Tech Stack:**
+- [x] TypeScript
+- [x] PostGreSQL
+- [x] node-postgre
+- [x] Express
+- [x] Jest
+- [x] Git SCM (on GitHub)
 
-Subject: 
-- Blog posting system API: 
-- Authors, Posts, Comments
+demo:
+[![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
 ## Features
-- [ ] RESTful API (Meets the Level 2 of the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html))
-- [ ] Documentation (all methods have basic documentation)
-- [ ] Unit testing (> 80% coverage)
-- [ ] SQL Data Persistance (3 tables; all 3NF)
-- [ ] Filter by authors (added)
-- [ ] Commenting system (added)
-
-## Tech Stack
-- [ ] TypeScript
-- [ ] PostGreSQL
-- [ ] node-postgre
-- [ ] Express
-- [ ] Jest
-- [ ] Git SCM (on GitHub)
+- RESTful API (Meets the Level 2 of the [Richardson Maturity Model](https://martinfowler.com/articles/richardsonMaturityModel.html))
+- Documentation (all methods have basic documentation)
+- Unit testing (> 80% coverage)
+- SQL Data Persistance (3 tables; all 3NF)
+- Filter by authors (added)
+- Commenting system (added)
 
 ## Init Instructions
+- install node 6.14.4 or higher
 - npm install
-- npm install express body-parser
 
-## Postman
-- running on localhost:3000
-
+### Postman
+  - npm start
+  - test on http://localhost:3000
+  - Endpoints:
+```
 Authors:
 1. View all users: /authors
 2. Create new author: /authors
@@ -50,10 +48,11 @@ Posts:
 
 Comments:
 1. View all comments by post: /comments/posts/id 
-2. Create a comment :/comments 
-3. Update my comment :/comments
-4. Delete my comment :/comments/id
+2. Create a comment: /comments 
+3. Update my comment: /comments
+4. Delete my comment: /comments/id
 5. View all comments: /comments
-
-## View Test Coverage
-- coverage/icon-report/index.html
+```
+### Test Coverage
+  - npm test
+  - view in browser: coverage/icon-report/index.html
