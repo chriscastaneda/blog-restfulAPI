@@ -27,7 +27,7 @@ A interactive RESTful API representing a blog posting platform containing basic 
 ### Postman
   - npm start
   - test on http://localhost:3000
-  - Endpoints
+  - Endpoints:
 ```
 Authors:
 1. View all users: /authors
