@@ -24,7 +24,7 @@ Tech Stack:
 - install node 6.14.4 or higher
 - npm install
 
-### Postman Setup
+### Postman
   - npm start
   - test on http://localhost:3000
   - Endpoints
