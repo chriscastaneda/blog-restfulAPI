@@ -5,7 +5,7 @@ A interactive RESTful API representing a blog posting platform containing basic 
 **Tech Stack:**
 - [x] TypeScript
 - [x] PostGreSQL
-- [x] Node-Postgre (AWS)
+- [x] Node-Postgre (AWS-RDS)
 - [x] Express
 - [x] Jest
 - [x] Git SCM (on GitHub)
