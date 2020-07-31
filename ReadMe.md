@@ -30,7 +30,7 @@ Tech Stack:
 
 ### Postman Setup
   - npm start
-  - test in postman on http://localhost:3000
+  - test on http://localhost:3000
   - Endpoints
 ```
 Authors:
