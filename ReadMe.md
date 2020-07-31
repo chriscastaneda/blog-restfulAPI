@@ -9,7 +9,7 @@ Subject:
 - Authors, Posts, Comments
 
 Tech Stack
-- [ ] TypeScript
+    - TypeScript
 - [ ] PostGreSQL
 - [ ] node-postgre
 - [ ] Express
@@ -25,8 +25,8 @@ Tech Stack
 - Commenting system (added)
 
 ## Init Instructions
-- npm install
-- npm install express body-parser
+- install node 6.14.4 or higher
+- npm installr
 
 ## Postman
 - running on localhost:3000
