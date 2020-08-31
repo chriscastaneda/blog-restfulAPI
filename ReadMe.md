@@ -28,7 +28,7 @@ demo:
 ### Postman
   - npm start
   - test on http://localhost:3000
-  - Endpoints:
+  - Endpoint's instructions:
 ```
 Authors:
 1. View all users: /authors
@@ -57,8 +57,8 @@ Comments:
   - npm test
   - view in browser: coverage/icon-report/index.html
 
-## Demo Instructions
--open: https://reqbin.com/
--enter url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
--click send to see response.
--follow the authors, posts, comments instructions above to interact with api!
+## Live Demo
+  - open: https://reqbin.com/
+  - enter url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
+  - click send to see response.
+  - follow the Endpoint's instructions above to interact with api!
