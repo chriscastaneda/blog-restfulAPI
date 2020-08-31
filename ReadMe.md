@@ -56,3 +56,9 @@ Comments:
 ### Test Coverage
   - npm test
   - view in browser: coverage/icon-report/index.html
+
+## Demo Instructions
+-open: https://reqbin.com/
+-enter url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
+-click send to see response.
+-follow the authors, posts, comments instructions above to interact with api!
