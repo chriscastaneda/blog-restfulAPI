@@ -60,5 +60,5 @@ Comments:
 ## Live Demo
   - open in new tab: https://reqbin.com/
   - copy & paste url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
-  - click send to see response.
-  - follow the _Endpoint instructions_ above to interact with api!
+  - click send to see response!
+  - follow the _Endpoint instructions_ above to interact with api.
