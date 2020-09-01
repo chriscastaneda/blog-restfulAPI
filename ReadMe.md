@@ -1,11 +1,11 @@
-# Simple Blog API
+# Blogger API
 
 A interactive RESTful API representing a blog posting platform containing basic _Authors_ options, article(_Posts_) database, and _Commenting_ system.
 
 **Tech Stack:**
 - [x] TypeScript
 - [x] PostGreSQL
-- [x] node-postgre
+- [x] Node-Postgre (AWS-RDS)
 - [x] Express
 - [x] Jest
 - [x] Git SCM (on GitHub)
@@ -23,12 +23,12 @@ demo:
 
 ## Init Instructions
 - install node 6.14.4 or higher
-- npm install
+- _server/_ npm install
 
 ### Postman
   - npm start
   - test on http://localhost:3000
-  - Endpoints:
+  - Endpoint instructions:
 ```
 Authors:
 1. View all users: /authors
@@ -56,3 +56,9 @@ Comments:
 ### Test Coverage
   - npm test
   - view in browser: coverage/icon-report/index.html
+
+## Live Demo
+  - open in new tab: https://reqbin.com/
+  - copy & paste url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
+  - click send to see response!
+  - follow the _Endpoint instructions_ above to interact with api.
