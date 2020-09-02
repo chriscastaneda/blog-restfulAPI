@@ -56,6 +56,7 @@ Comments:
 ### Test Coverage
   - npm test
   - view in browser: coverage/icon-report/index.html
+  - [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
 
 ## Live Demo
   - open in new tab: https://reqbin.com/
