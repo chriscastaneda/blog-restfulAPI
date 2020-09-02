@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon ./src/app.ts",
     "test": "jest --verbose --watch --coverage --watchAll",
-    "stop": "pkill --signal SIGINT restfulapi-blog"
+    
   },
   "repository": {
     "type": "git",
