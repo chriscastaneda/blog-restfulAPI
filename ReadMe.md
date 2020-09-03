@@ -1,6 +1,6 @@
 # Blogger API
 
-A interactive RESTful API representing a blog posting platform containing basic _Authors_ options, article(_Posts_) database, and _Commenting_ system.
+A interactive RESTful API representing a blog posting platform containing basic _Authors_ options, a _Blog Posts_ database, and user _Commenting_ system.
 
 **Tech Stack:**
 - [x] TypeScript
@@ -11,7 +11,6 @@ A interactive RESTful API representing a blog posting platform containing basic 
 - [x] Git SCM (on GitHub)
 
 _Live demo: below_
-
 **preview**:
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
