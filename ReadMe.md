@@ -10,7 +10,9 @@ A interactive RESTful API representing a blog posting platform containing basic 
 - [x] Jest
 - [x] Git SCM (on GitHub)
 
-preview:
+**Live demo**: below
+
+**preview**:
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
 ## Features
