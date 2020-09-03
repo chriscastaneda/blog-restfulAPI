@@ -64,5 +64,5 @@ Comments:
 ### Test Coverage
   1. npm test
   2. view results in browser: coverage/icon-report/index.html
-    - or view on github: [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
+   - or view on github: [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
 
