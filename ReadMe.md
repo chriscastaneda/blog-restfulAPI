@@ -54,8 +54,8 @@ Comments:
 5. View all comments: /comments
 ```
 ### Test Coverage
-  - npm test
-  - view in browser: coverage/icon-report/index.html
+  1. npm test
+  2. view in browser: coverage/icon-report/index.html
   - [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
 
 ## Live Demo
