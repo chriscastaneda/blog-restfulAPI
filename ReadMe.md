@@ -10,9 +10,9 @@ A interactive RESTful API representing a blog posting platform containing basic 
 - [x] Jest
 - [x] Git SCM (on GitHub)
 
-_*View live demo below_
+**Live Demo:** _below_
 
-**Preview**:
+**Project Preview**:
 [![Demo](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/demo_snip.PNG)](https://drive.google.com/file/d/1OwGqfscMwRI50urK1upcFeucRw360DEK/view?usp=sharing)
 
 ## Features
@@ -23,10 +23,10 @@ _*View live demo below_
 - Filter by authors (added)
 - Commenting system (added)
 
-## Live Demo
-  1. Open in new tab: https://reqbin.com/
-  2. Copy url into blue-fieldbox (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
-  3. Click send to see response!
+## Demo Instructions
+  1. Open link in new tab: https://reqbin.com/
+  2. Copy url into blue-fieldbox: (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
+  3. Click 'Send' to see response!
   4. Follow the _Endpoint instructions_ below to interact with api.
 
 ## Init Instructions
