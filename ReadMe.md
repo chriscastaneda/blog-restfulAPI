@@ -23,7 +23,7 @@ A interactive RESTful API representing a blog posting platform containing basic 
 - Filter by authors (added)
 - Commenting system (added)
 
-## Live Demo Instructions
+## Live-Demo Instructions
   1. Open link in new tab: https://reqbin.com/
   2. Copy url into blue-fieldbox: (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
   3. Click 'Send' to see response!
@@ -63,6 +63,6 @@ Comments:
 ```
 ### Test Coverage
   1. npm test
-  2. view in browser: coverage/icon-report/index.html
-  - [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
+  2. view results in browser: coverage/icon-report/index.html
+    - or view on github: [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
 
