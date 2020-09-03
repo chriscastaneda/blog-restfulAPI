@@ -21,11 +21,11 @@ demo:
 - Filter by authors (added)
 - Commenting system (added)
 
-## Live Demo Instructions
-  1. open in new tab: https://reqbin.com/
-  2 copy & paste url: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
+## Live Demo
+  1. open new tab: https://reqbin.com/
+  2. copy & paste url into field box: http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors
   3. click send to see response!
-  4. follow the _Endpoint instructions_ above to interact with api.
+  4. follow the _Endpoint instructions_ below to interact with api.
 
 ## Init Instructions
 - install node 6.14.4 or higher
