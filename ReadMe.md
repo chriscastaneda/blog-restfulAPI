@@ -25,7 +25,7 @@ _*Live demo: below_
 
 ## Live Demo
   1. Open in new tab: https://reqbin.com/
-  2. Copy url to fieldbox (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
+  2. Copy url into blue-fieldbox (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
   3. Click send to see response!
   4. Follow the _Endpoint instructions_ below to interact with api.
 
