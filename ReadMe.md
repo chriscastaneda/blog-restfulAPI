@@ -31,7 +31,8 @@ A interactive RESTful API representing a blog posting platform containing basic 
 
 ## Init Instructions
 - install node 6.14.4 or higher
-- _server/_ npm install
+- _server/_ 
+- npm install
 
 ### Postman
   - npm start
@@ -62,7 +63,7 @@ Comments:
 5. View all comments: /comments
 ```
 ### Test Coverage
-  1. npm test
-  2. view results in browser: coverage/icon-report/index.html
+  - npm test
+  - view results in browser: coverage/icon-report/index.html
    - or view on github: [test_coverage](https://github.com/chriscastaneda/rev-p0-restfulAPI/blob/master/assests/img/test_coverage.PNG) 
 
