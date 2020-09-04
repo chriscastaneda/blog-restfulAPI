@@ -31,11 +31,10 @@ A interactive RESTful API representing a blog posting platform containing basic 
 
 ## Init Instructions
 - install node 6.14.4 or higher
-- _server/_ 
-- npm install
+- _cd server/_ npm install
+- npm start
 
 ### Postman
-  - npm start
   - test on http://localhost:3000
   - Endpoint instructions:
 ```
