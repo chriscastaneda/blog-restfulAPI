@@ -27,7 +27,7 @@ A interactive RESTful API representing a blog posting platform containing basic 
   1. Open link in new tab: https://reqbin.com/
   2. Copy url into blue-fieldbox: (http://ec2-54-183-207-67.us-west-1.compute.amazonaws.com:3000/authors)
   3. Click 'Send' to see response!
-  4. Follow the Postman: _Endpoint instructions_ below to interact with api.
+  4. Follow the Postman: _"Endpoint instructions"_ below to interact with api.
 
 ## Init Instructions
 - install node 6.14.4 or higher
