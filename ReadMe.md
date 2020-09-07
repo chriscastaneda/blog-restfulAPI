@@ -38,6 +38,9 @@ A interactive RESTful API representing a blog posting platform containing basic 
   - test on http://localhost:3000
   - Endpoint instructions:
 ```
+Legend:
+Update - [Patch]
+
 Authors:
 1. View all users: /authors
 2. Create new author: /authors
